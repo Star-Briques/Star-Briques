@@ -59,9 +59,12 @@
     .flag-right { right: 2%; } /* ✅ Drapeau droit à 35px de l’extrémité */
 
     /* ✅ Ajustement du logo */
-    .logo-center {
-        height: 50%;
-    }
+.logo-center {
+    width: 100px; /* ✅ Largeur imposée */
+    height: auto; /* ✅ Conserve les proportions */
+    max-height: 70px; /* ✅ Limite la hauteur */
+}
+
 
     /* ✅ Ajustement des boutons */
     .load-btn {
