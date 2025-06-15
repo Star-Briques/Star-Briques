@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D-web générator</title>
-<link rel="icon" href="../ico.png" type="image/webp">
+<link rel="icon" href="ico.png" type="image/webp">
 <style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
 /* ✅ Style général */ 
 body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
@@ -246,7 +246,7 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 <div class="top-bar">
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
     <button class="load-btn" onclick="openModal('http://facebook.com/')">Page 2</button>
-    <img src="../ico.png" alt="Logo" class="logo-center">
+    <img src="ico.png" alt="Logo" class="logo-center">
     <button class="load-btn" onclick="openModal('page3.html')">Page 3</button>
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
 </div>
@@ -254,16 +254,20 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 <div id="video-slider">
     <button id="prev-btn">❮</button>
     <div class="video-slide active">
-        <video src="vid001.mp4" autoplay muted></video>
+        <video src="vid001.mp4" controls></video>
         <div class="video-caption">Vidéo 1 - Présentation</div>
     </div>
-    <div class="video-slide">
-        <video src="vid002.mp4" autoplay muted></video>
+    <div class="video-slide ">
+        <video src="vid002.mp4" controls></video>
         <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
     </div>
-    <div class="video-slide">
-        <video src="video3.mp4" autoplay muted></video>
+    <div class="video-slide ">
+        <video src="vid003.mp4" controls></video>
         <div class="video-caption">Vidéo 3 - Démo en direct</div>
+    </div>
+    <div class="video-slide ">
+        <video src="vid004.mp4" controls></video>
+        <div class="video-caption">Vidéo 4 - Témoignages</div>
     </div>
     <button id="next-btn">❯</button>
 </div>
@@ -277,11 +281,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let index = 0;
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
-
-    if (slides.length === 0) {
-        console.error('❌ Aucun slide trouvé. Vérifie si les vidéos existent bien.');
-        return;
-    }
 
     function changeSlide(next = true) {
         slides.forEach(slide => slide.classList.remove('active'));
@@ -299,7 +298,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function stopAutoSlide() {
         clearInterval(autoSlide);
-        autoSlide = setInterval(() => changeSlide(true), 15000); // Redémarre après l'interaction
+        autoSlide = setInterval(() => changeSlide(true), 15000);
     }
 
     prevBtn.addEventListener('click', function() {
@@ -419,7 +418,6 @@ function ouvrirPartage() {
         padding: 8px;
     }
 }
-
 
 
 </style>
