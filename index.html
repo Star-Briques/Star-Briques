@@ -154,9 +154,9 @@ background-size: cover; background-position: center; }
 .video-slide { position: absolute; width: 100%; height: 100%; opacity: 0; 
 transition: opacity 1s ease-in-out; } 
 
-.video-slide.active { opacity: 1; } 
+.video-slide.active { opacity: 0.8; } 
 
-.video-caption { position: absolute; bottom: 10px; left: 10px; 
+.video-caption { position: absolute; bottom: 10px; left: 10px; opacity:1;
 background: rgba(0, 0, 0, 0.6); color: white; padding: 5px; border-radius: 5px; }
 
 /* ✅ Bloc fixe des infos */ 
@@ -189,7 +189,7 @@ background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 8px; color: white; 
         <div class="video-caption">Vidéo 1 - Présentation</div>
     </div>
     <div class="video-slide">
-        <video src="vid001.mp4" autoplay muted></video>
+        <video src="vid002.mp4" autoplay muted></video>
         <div class="video-caption">Des briques fonctionelles ..</div>
     </div>
     <div class="video-slide">
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevBtn && nextBtn) {
         prevBtn.addEventListener('click', function() {
             console.log('👈 Bouton Précédent cliqué');
-            changeSlide(false);
+            changeSlide(true);
         });
 
         nextBtn.addEventListener('click', function() {
