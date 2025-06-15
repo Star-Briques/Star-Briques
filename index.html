@@ -14,7 +14,7 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 
 .center { display: flex; justify-content: center; flex: 2; } 
 
-/* ✅ Correction du positionnement des drapeaux sur PC */   
+/* ✅ Correction du positionnement des drapeaux sur PC */ 
 .flag-left, .flag-right { height: 50px; width: auto; border-radius: 8px; position: absolute; } 
 
 .flag-left { left: 0.7%; } 
@@ -129,8 +129,6 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
     height: 300px;
     position: relative;
     overflow: hidden;
-  .video-slide {
-    display: none; /* Cache la vidéo inactive *
 }
 
 .video-slide {
@@ -143,8 +141,6 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 
 .video-slide.active {
     opacity: 1;
-  .video-slide.active {
-    display: block; /* Affiche seulement la vidéo active *
 }
 
 /* ✅ Captions adaptées pour PC et mobile */
@@ -258,31 +254,19 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 <div id="video-slider">
     <button id="prev-btn">❮</button>
     <div class="video-slide active">
-        <video controls>
-            <source src="vid001.mp4" type="video/mp4">
-            Ton navigateur ne supporte pas la lecture vidéo.
-        </video>
+        <video src="vid001.mp4" controls></video>
         <div class="video-caption">Vidéo 1 - Présentation</div>
     </div>
     <div class="video-slide ">
-        <video controls>
-            <source src="vid002.mp4" type="video/mp4">
-            Ton navigateur ne supporte pas la lecture vidéo.
-        </video>
+        <video src="vid002.mp4" controls></video>
         <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
     </div>
     <div class="video-slide ">
-        <video controls>
-            <source src="vid003.mp4" type="video/mp4">
-            Ton navigateur ne supporte pas la lecture vidéo.
-        </video>
+        <video src="vid003.mp4" controls></video>
         <div class="video-caption">Vidéo 3 - Démo en direct</div>
     </div>
     <div class="video-slide ">
-        <video controls>
-            <source src="vid004.mp4" type="video/mp4">
-            Ton navigateur ne supporte pas la lecture vidéo.
-        </video>
+        <video src="vid004.mp4" controls></video>
         <div class="video-caption">Vidéo 4 - Témoignages</div>
     </div>
     <button id="next-btn">❯</button>
