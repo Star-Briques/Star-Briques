@@ -96,80 +96,149 @@ body { font-family: 'Papyrus', sans-serif; text-align: center;
 background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
 
 /* ✅ Bloc fixe des infos */ 
-#infos-container { position: fixed; top: 10%; right: 1%; width: 27%; 
-background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 8px; color: white; } 
-
-
+#infos-container { 
+    position: fixed; 
+    top: 10%; /* Remplacé 10% par 10px pour plus de stabilité */
+    right: 1%; 
+    width: 27%; 
+    background: rgba(0, 0, 0, 0.5); 
+    padding: 5px; 
+    border-radius: 8px; 
+    color: white; 
+    z-index: 9999; /* Assure qu'il reste au premier plan */
+} 
 
 /* ✅ Conteneur principal */ 
-.container { width: 40%; margin: auto; padding: 10px; margin-top: 7%; 
-border-radius: 8px; background: rgba(0, 0, 0, 0.05); 
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
-position: relative; background-image: url('http://lesterterrois.myartsonline.com/imsite/Star-Briques-LTD/Star-Briques-LTD_+24166367935_Star-Briques-LTD_bgimg.webp'); 
-background-size: cover; background-position: center; } 
+.container { 
+    width: 40%; 
+    margin: auto; 
+    padding: 10px; 
+    margin-top: 7%; 
+    border-radius: 8px; 
+    background: rgba(0, 0, 0, 0.05); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
+    position: relative; 
+    background-image: url('http://lesterterrois.myartsonline.com/imsite/Star-Briques-LTD/Star-Briques-LTD_+24166367935_Star-Briques-LTD_bgimg.webp'); 
+    background-size: cover; 
+    background-position: center; 
+} 
 
-/* ✅ Conteneur du slider vidéo */ 
-#video-slider { width: 100%; height: 300px; position: relative; overflow: hidden; } 
-
-
-
-/* ✅ Boutons de navigation pour le slider vidéo */
-#prev-btn, #next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  z-index: 1001; /* ✅ Assure qu'ils restent au-dessus */
+/* ✅ Conteneur du slider vidéo */
+#video-slider {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
 }
 
-#prev-btn { left: 10px; }  /* ✅ Positionne à gauche */
-#next-btn { right: 10px; } /* ✅ Positionne à droite */
+.video-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
 
+.video-slide.active {
+    opacity: 1;
+}
 
+/* ✅ Captions adaptées pour PC et mobile */
+.video-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
 
+/* ✅ Boutons navigation du slider */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 1001;
+}
 
+#prev-btn { left: 10px; }
+#next-btn { right: 10px; }
 
+#prev-btn:hover, #next-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
 
-
-
-/* ✅ --------------------------------------------------------------------------------------------------------------------------- */ 
+/* ✅ Ajustements pour mobile ------------------------------------------------------------------------------------------------------------ */
 @media screen and (max-width: 768px) { 
+    /* ✅ Conteneur principal */ 
+    .container { 
+        width: 95%; height:60%;
+        margin: auto; 
+        padding: 10px; 
+        margin-top: 20%; 
+        border-radius: 8px; 
+        background: rgba(0, 0, 0, 0.05); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
+        position: relative; 
+        background-image: url('http://lesterterrois.myartsonline.com/imsite/Star-Briques-LTD/Star-Briques-LTD_+24166367935_Star-Briques-LTD_bgimg.webp'); 
+        background-size: cover; 
+        background-position: center; 
+    } 
 
-/* ✅ Conteneur principal */ 
-.container { width: 95%; margin: auto; padding: 10px; margin-top: 20%; 
-border-radius: 8px; background: rgba(0, 0, 0, 0.05); 
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
-position: relative; background-image: url('http://lesterterrois.myartsonline.com/imsite/Star-Briques-LTD/Star-Briques-LTD_+24166367935_Star-Briques-LTD_bgimg.webp'); 
-background-size: cover; background-position: center; } 
+    #video-slider { 
+        position: relative; 
+        width: 95%;  
+        margin-top: 40%;  
+    } 
 
+    .video-slide { 
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        opacity: 0; 
+        transition: opacity 1s ease-in-out;  
+    } 
 
-  #video-slider { position: relative; width: 95%;  margin-top: 40%; } /* ✅ Ajout du top: 10% */ 
- 
+    .video-slide.active { 
+        opacity: 1; 
+    } 
 
-.video-slide { position: absolute; width: 100%; height: 100%; opacity: 0; 
-transition: opacity 1s ease-in-out; } 
+    .video-caption {
+        bottom: 5px;
+        left: 5px;
+        font-size: 12px; 
+        background: rgba(0, 0, 0, 0.6); 
+        color: white; 
+        padding: 5px; 
+        border-radius: 5px; 
+    }
 
-.video-slide.active { opacity: 0.8; } 
+    /* ✅ Bloc fixe des infos */
+    #infos-container { 
+        position: relative; /* Corrigé pour éviter la position relative */
+        top: 9%; /* Ajusté pour un bon rendu */
+        right: 3px; 
+        left: 3px; 
+        width: 97%; 
+        background: rgba(0, 0, 0, 0.5); 
+        padding: 5px; 
+        border-radius: 8px; 
+        color: white; margin-top:15%;
+    }
 
-.video-caption { position: absolute; bottom: 10px; left: 10px; opacity:1;
-background: rgba(0, 0, 0, 0.6); color: white; padding: 5px; border-radius: 5px; }
-
-/* ✅ Bloc fixe des infos */ 
-#infos-container { position: relative; margin-top: 13%; right: 3px; left:3px; width: 97%; 
-background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 8px; color: white; } 
-
-
-  #prev-btn, #next-btn {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-
+    #prev-btn, #next-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
 }
 </style>
 </head>
@@ -185,12 +254,12 @@ background: rgba(0, 0, 0, 0.5); padding: 5px; border-radius: 8px; color: white; 
 <div id="video-slider">
     <button id="prev-btn">❮</button>
     <div class="video-slide active">
-        <video src="vid002.mp4" autoplay muted></video>
+        <video src="video1.mp4" autoplay muted></video>
         <div class="video-caption">Vidéo 1 - Présentation</div>
     </div>
     <div class="video-slide">
-        <video src="vid002.mp4" autoplay muted></video>
-        <div class="video-caption">Des briques fonctionelles ..</div>
+        <video src="video2.mp4" autoplay muted></video>
+        <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
     </div>
     <div class="video-slide">
         <video src="video3.mp4" autoplay muted></video>
@@ -204,60 +273,47 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ Script chargé');
 
     let slides = document.querySelectorAll('.video-slide');
+    let captions = document.querySelectorAll('.video-caption');
+    let index = 0;
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
-    let index = 0;
 
-    if (slides.length > 0) {
-        console.log('✅ Slides détectés:', slides.length);
-    } else {
-        console.log('❌ Aucun slide trouvé. Vérifie si les vidéos existent bien.');
-        return; // ❌ Arrêter le script si les vidéos sont introuvables
-    }
-
-    if (prevBtn && nextBtn) {
-        console.log('✅ Boutons trouvés');
-    } else {
-        console.log('❌ Boutons non trouvés');
+    if (slides.length === 0) {
+        console.error('❌ Aucun slide trouvé. Vérifie si les vidéos existent bien.');
+        return;
     }
 
     function changeSlide(next = true) {
-        console.log('🌀 Changement de slide...');
-
         slides.forEach(slide => slide.classList.remove('active'));
+        captions.forEach(caption => caption.classList.remove('active'));
 
-        if (next) {
-            index = (index + 1) % slides.length;
-        } else {
-            index = (index - 1 + slides.length) % slides.length;
-        }
+        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
         slides[index].classList.add('active');
+        captions[index].classList.add('active');
+
         console.log('📌 Slide actif :', index);
     }
 
-    setTimeout(() => {
-        console.log('⏳ Auto Slide déclenché après chargement...');
-        setInterval(() => {
-            console.log('⏳ Auto Slide actif');
-            changeSlide(true);
-        }, 5000);
-    }, 2000); // ✅ Attendre 2 secondes pour laisser le DOM se charger
+    let autoSlide = setInterval(() => changeSlide(true), 15000);
 
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', function() {
-            console.log('👈 Bouton Précédent cliqué');
-            changeSlide(true);
-        });
-
-        nextBtn.addEventListener('click', function() {
-            console.log('👉 Bouton Suivant cliqué');
-            changeSlide(true);
-        });
+    function stopAutoSlide() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(() => changeSlide(true), 15000); // Redémarre après l'interaction
     }
+
+    prevBtn.addEventListener('click', function() {
+        console.log('👈 Bouton Précédent cliqué');
+        changeSlide(false);
+        stopAutoSlide();
+    });
+
+    nextBtn.addEventListener('click', function() {
+        console.log('👉 Bouton Suivant cliqué');
+        changeSlide(true);
+        stopAutoSlide();
+    });
 });
-
-
 </script>
 <div id="infos-container">
 <p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
@@ -301,7 +357,7 @@ function ouvrirPartage() {
 <style>
 .menu-btn {
     position: fixed;
-    top: 12%;
+    top: 10%;
     left: 10px;
     background-color: #642EFE;  background: rgba(100, 46, 254, 0.2);
     color: white;
@@ -318,7 +374,7 @@ function ouvrirPartage() {
     border-radius: 8px;
     top: 10%;
     left: -110%; /* ✅ Assure qu'il soit complètement caché */
-    width: 26%;
+    width: 27%;
     height: 78.3%;
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
