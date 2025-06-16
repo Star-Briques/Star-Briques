@@ -276,32 +276,7 @@ video {
 <p><strong>basdepage:</strong> Star-Briques-LTD</p>
 <p><strong>local:</strong> Akanda-Amissa transfo</p>
 </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    let slides = document.querySelectorAll('.video-container');
-    let index = 0;
-    let prevBtn = document.getElementById('prev-btn');
-    let nextBtn = document.getElementById('next-btn');
 
-    function changeSlide(next = true) {
-        slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les vidéos
-
-        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
-
-        slides[index].style.display = 'flex'; // Affiche la vidéo active
-    }
-
-    prevBtn.addEventListener('click', function() {
-        changeSlide(false);
-    });
-
-    nextBtn.addEventListener('click', function() {
-        changeSlide(true);
-    });
-
-    changeSlide(); // Affiche la première vidéo au chargement
-});
-</script>
 <div class='message-box'><p style='color:green; font-weight:bold;'>✅ Flyer sécurisé</p></div>
 <button class='share-btn' onclick='ouvrirPartage()'>Partager le Flyer</button>
 <script>
