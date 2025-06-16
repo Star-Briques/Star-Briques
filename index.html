@@ -55,7 +55,7 @@ a, button { cursor: pointer; }
   .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
   .center { flex: 2; } 
 } 
-</style> 
+</style>
 <style>
 .top-bar {
  position: fixed;
@@ -117,6 +117,7 @@ body {
     background-position: center; 
 } 
 
+/* ✅ Positionnement du bloc fixe */
 #infos-container {
     position: fixed;
     top: 10%;
@@ -128,15 +129,30 @@ body {
     color: white;
 }
 
+/* ✅ Ajustements pour mobile */
+@media screen and (max-width: 768px) { 
+    #infos-container {
+        position: relative;
+        top: 13%;
+        right: 3px;
+        left: 3px;
+        width: 97%;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 8px;
+        color: white;
+    }
+}
+
+/* ✅ Slider vidéo */
 .video-slider {
     position: relative;
     width: 100%;
-    max-width: 250px;
-    height: 250px; /* ✅ Fixe la hauteur du slider */
+    max-width: 600px;
+    height: 300px; /* Fixe la hauteur */
     margin: auto;
     overflow: hidden;
 }
-
 
 .slides {
     display: flex;
@@ -159,6 +175,7 @@ video {
     border-radius: 10px;
 }
 
+/* ✅ Superposition du texte sur la vidéo */
 .video-caption {
     position: absolute;
     bottom: 20px;
@@ -171,6 +188,7 @@ video {
     pointer-events: none;
 }
 
+/* ✅ Boutons Précédent et Suivant */
 #prev-btn, #next-btn {
     position: absolute;
     top: 50%;
@@ -191,48 +209,6 @@ video {
 #prev-btn:hover, #next-btn:hover {
     background: rgba(255, 255, 255, 0.3);
 }
-
-@media screen and (max-width: 768px) { 
-    .container { 
-        width: 95%;
-        height: 60%;
-        margin-top: 20%; 
-        padding: 10px;
-    } 
-
-    .video-slider { 
-        width: 95%;  
-        margin-top: 40%;  
-    } 
-
-    video {
-        width: 95%;
-        max-width: 100%;
-    }
-
-    .video-caption {
-        bottom: 5px;
-        left: 5px;
-        font-size: 12px;
-    }
-
-    #prev-btn, #next-btn {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    #infos-container {
-        position: relative;
-        top: 13%;
-        right: 3px;
-        left: 3px;
-        width: 97%;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px;
-        border-radius: 8px;
-        color: white;
-    }
-}
 </style>
 </head>
 <body>
@@ -245,8 +221,8 @@ video {
 </div>
 <div class="container">
 <div class="video-slider">
-<button id="prev-btn">❮</button>
-<button id="next-btn">❯</button>
+    <button id="prev-btn">❮</button>
+    <button id="next-btn">❯</button>
 <div class="slides">
     <div class="video-container">
         <video src="vid001.mp4" controls></video>
@@ -276,7 +252,32 @@ video {
 <p><strong>basdepage:</strong> Star-Briques-LTD</p>
 <p><strong>local:</strong> Akanda-Amissa transfo</p>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let slides = document.querySelectorAll('.video-container');
+    let index = 0;
+    let prevBtn = document.getElementById('prev-btn');
+    let nextBtn = document.getElementById('next-btn');
 
+    function changeSlide(next = true) {
+        slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les vidéos
+
+        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+
+        slides[index].style.display = 'flex'; // Affiche la vidéo active
+    }
+
+    prevBtn.addEventListener('click', function() {
+        changeSlide(false);
+    });
+
+    nextBtn.addEventListener('click', function() {
+        changeSlide(true);
+    });
+
+    changeSlide(); // Affiche la première vidéo au chargement
+});
+</script>
 <div class='message-box'><p style='color:green; font-weight:bold;'>✅ Flyer sécurisé</p></div>
 <button class='share-btn' onclick='ouvrirPartage()'>Partager le Flyer</button>
 <script>
@@ -402,3 +403,4 @@ document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 </script>
 </body>
 </html>
+
