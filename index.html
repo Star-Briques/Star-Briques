@@ -5,126 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slider Vidéo</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            background-color: rgba(0, 0, 0, 0.2); 
-            color: #642EFE;
-        }
-
-        .container {
-            width: 40%;
-            margin: auto;
-            padding: 10px;
-            margin-top: 7%;
-            border-radius: 8px;
-            background: rgba(0, 0, 0, 0.05);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-            position: relative;
-        }
-
-        .video-slider {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            margin: auto;
-            overflow: hidden;
-        }
-
-        .slides {
-            display: flex;
-            width: 400%;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .video-container {
-            width: 100%;
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        video {
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .video-caption {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 5px;
-            border-radius: 5px;
-            font-size: 14px;
-            pointer-events: none;
-        }
-
-        #prev-btn, #next-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-
-        #prev-btn { left: 10px; }
-        #next-btn { right: 10px; }
+        body { text-align: center; background-color: #f4f4f4; font-family: Arial, sans-serif; }
+        .video-slider { position: relative; width: 600px; height: 300px; margin: auto; overflow: hidden; }
+        .slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .video-container { min-width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+        video { width: 100%; border-radius: 10px; }
+        .video-caption { position: absolute; bottom: 10px; left: 10px; background: rgba(0, 0, 0, 0.6); color: white; padding: 5px; font-size: 14px; }
+        #prev-btn, #next-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; padding: 10px; cursor: pointer; border-radius: 5px; }
+        #prev-btn { left: 10px; } #next-btn { right: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="video-slider">
-            <button id="prev-btn">❮</button>
-            <div class="slides">
-                <div class="video-container">
-                    <video src="vid001.mp4" controls></video>
-                    <div class="video-caption">Vidéo 1 - Présentation</div>
-                </div>
-                <div class="video-container">
-                    <video src="vid002.mp4" controls></video>
-                    <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
-                </div>
-                <div class="video-container">
-                    <video src="vid003.mp4" controls></video>
-                    <div class="video-caption">Vidéo 3 - Démo en direct</div>
-                </div>
-                <div class="video-container">
-                    <video src="vid004.mp4" controls></video>
-                    <div class="video-caption">Vidéo 4 - Témoignages</div>
-                </div>
-            </div>
-            <button id="next-btn">❯</button>
+    <div class="video-slider">
+        <button id="prev-btn">❮</button>
+        <div class="slides">
+            <div class="video-container"><video src="vid001.mp4" controls></video><div class="video-caption">Vidéo 1</div></div>
+            <div class="video-container"><video src="vid002.mp4" controls></video><div class="video-caption">Vidéo 2</div></div>
+            <div class="video-container"><video src="vid003.mp4" controls></video><div class="video-caption">Vidéo 3</div></div>
+            <div class="video-container"><video src="vid004.mp4" controls></video><div class="video-caption">Vidéo 4</div></div>
         </div>
+        <button id="next-btn">❯</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let slides = document.querySelectorAll('.video-container');
+            let slides = document.querySelector('.slides');
+            let videoContainers = document.querySelectorAll('.video-container');
             let index = 0;
-            let prevBtn = document.getElementById('prev-btn');
-            let nextBtn = document.getElementById('next-btn');
-
-            function changeSlide(next = true) {
-                slides.forEach(slide => slide.style.display = 'none');
-                index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
-                slides[index].style.display = 'flex';
-            }
-
-            prevBtn.addEventListener('click', function() { changeSlide(false); });
-            nextBtn.addEventListener('click', function() { changeSlide(true); });
-
-            changeSlide();
+            document.getElementById('prev-btn').addEventListener('click', function() { index = (index > 0) ? index - 1 : videoContainers.length - 1; updateSlider(); });
+            document.getElementById('next-btn').addEventListener('click', function() { index = (index < videoContainers.length - 1) ? index + 1 : 0; updateSlider(); });
+            function updateSlider() { slides.style.transform = `translateX(-${index * 100}%)`; }
         });
     </script>
 
