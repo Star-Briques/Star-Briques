@@ -1,4 +1,4 @@
-ht<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -104,7 +104,7 @@ body {
 } 
 
 .container { 
-    width: 40%; max-height: 40%vh;
+    width: 40%; max-height:40%;
     margin: auto; 
     padding: 10px; 
     margin-top: 7%; 
@@ -131,9 +131,9 @@ body {
 .video-slider {
     position: relative;
     width: 100%;
-    max-width: 200px;
+    max-width: 600px;
     margin: auto;
-   
+    overflow: hidden;
 }
 
 .slides {
@@ -152,7 +152,7 @@ body {
 }
 
 video {
-    width: 100%; 
+    width: 100%;
     max-width: 100%;
     border-radius: 10px;
 }
@@ -413,7 +413,7 @@ function toggleMenu() {
     }
 }
 
- 
+
 // ✅ Décodage correct des caractères spéciaux avant insertion
 document.getElementById('men1').innerText = 'Star-Briques-LTD';
 document.getElementById('men2').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles  Des briques solides, insonorisantes, économiques — et des prix imbattables pour vos projets de construction.';
