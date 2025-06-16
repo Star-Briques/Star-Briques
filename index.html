@@ -1,405 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D-web générator</title>
-<link rel="icon" href="ico.png" type="image/webp">
-<style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
-/* ✅ Style général */ 
-body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Vidéo</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            background-color: rgba(0, 0, 0, 0.2); 
+            color: #642EFE;
+        }
 
-/* ✅ Répartition uniforme des éléments */ 
-.left-side, .right-side { display: flex; align-items: center; justify-content: center; flex: 1; gap: 10px; } 
+        .container {
+            width: 40%;
+            margin: auto;
+            padding: 10px;
+            margin-top: 7%;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+            position: relative;
+        }
 
-.center { display: flex; justify-content: center; flex: 2; } 
+        .video-slider {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            margin: auto;
+            overflow: hidden;
+        }
 
-/* ✅ Correction du positionnement des drapeaux sur PC */ 
-.flag-left, .flag-right { height: 50px; width: auto; border-radius: 8px; position: absolute; } 
+        .slides {
+            display: flex;
+            width: 400%;
+            transition: transform 0.5s ease-in-out;
+        }
 
-.flag-left { left: 0.7%; } 
-.flag-right { right: 2%; } 
+        .video-container {
+            width: 100%;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-/* ✅ Ajustement du logo */ 
-.logo-center {
-    width: 50px; /* Largeur spécifique */
-    height: 50px; /* Hauteur spécifique */
-}
+        video {
+            width: 100%;
+            max-width: 100%;
+        }
 
+        .video-caption {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            pointer-events: none;
+        }
 
-/* ✅ Image de profil */ 
-.profile-img { width: 120px; border-radius: 10px; position: absolute; top: 10px; right: 10px; } 
+        #prev-btn, #next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+        }
 
-/* ✅ Table d'informations */ 
-.table-info { width: 49%; border-collapse: collapse; margin-top: 10%; margin-left: 51%; } 
-
-.table-info td { padding: 4px; text-align: center; border: none; color: black; } 
-
-/* ✅ Icônes sociales */ 
-.social-container { position: fixed; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 10px; } 
-
-.social-icon { width: 30px; transition: transform 0.3s ease; } 
-.social-icon:hover { transform: scale(1.1); } 
-
-/* ✅ Bouton retour */ 
-.back-button { width: 50px; transition: transform 0.3s ease; } 
-.back-button:hover { transform: scale(1.1); } 
-
-/* ✅ Correction du curseur */ 
-body, div, span, p { cursor: default; } 
-a, button { cursor: pointer; } 
-
-/*------------------------------------------------------------ ✅ Adaptation pour mobile */ 
-@media screen and (max-width: 768px) { 
-  .left-side, .right-side { flex: 1; display: flex; align-items: center; justify-content: center; } 
-  .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
-  .center { flex: 2; } 
-} 
-</style>
-<style>
-.top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 100%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 10px;
- flex-wrap: wrap;
- z-index: 1000;
-}
-.logo-center {
- height: 60%;
- max-height: 70px;
-}
-.load-btn {
- background-color: transparent;
- color: white;
- border: 2px solid white;
- border-radius: 8px;
- padding: 6px 12px;
- cursor: pointer;
- font-weight: bold;
- width: 10%;
- min-width: 80px;
- max-width: 100%;
- font-size: 14px;
- transition: 0.3s;
- z-index: 8001;
-}
-.load-btn:hover {
- background-color: rgba(255, 255, 255, 0.2);
-}
-</style>
-<style> 
-@import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
-
-body { 
-    font-family: 'Papyrus', sans-serif; 
-    text-align: center; 
-    background-color: rgba(0, 0, 0, 0.2); 
-    color: #642EFE; 
-    font-weight: bold; 
-} 
-
-.container { 
-    width: 40%; 
-    margin: auto; 
-    padding: 10px; 
-    margin-top: 7%; 
-    border-radius: 8px; 
-    background: rgba(0, 0, 0, 0.05); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
-    position: relative; 
-    background-image: url('http://lesterterrois.myartsonline.com/imsite/Star-Briques-LTD/Star-Briques-LTD_+24166367935_Star-Briques-LTD_bgimg.webp'); 
-    background-size: cover; 
-    background-position: center; 
-} 
-
-/* ✅ Positionnement du bloc fixe */
-#infos-container {
-    position: fixed;
-    top: 10%;
-    right: 3px;
-    width: 27%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 8px;
-    color: white;
-}
-
-/* ✅ Ajustements pour mobile */
-@media screen and (max-width: 768px) { 
-    #infos-container {
-        position: relative;
-        top: 13%;
-        right: 3px;
-        left: 3px;
-        width: 97%;
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px;
-        border-radius: 8px;
-        color: white;
-    }
-}
-
-/* ✅ Slider vidéo */
-.video-slider {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 300px; /* Fixe la hauteur */
-    margin: auto;
-    overflow: hidden;
-}
-
-.slides {
-    display: flex;
-    width: 400%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.video-container {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-video {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-/* ✅ Superposition du texte sur la vidéo */
-.video-caption {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    pointer-events: none;
-}
-
-/* ✅ Boutons Précédent et Suivant */
-#prev-btn, #next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    z-index: 1001;
-}
-
-#prev-btn { left: 10px; }
-#next-btn { right: 10px; }
-
-#prev-btn:hover, #next-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-</style>
+        #prev-btn { left: 10px; }
+        #next-btn { right: 10px; }
+    </style>
 </head>
 <body>
-<div class="top-bar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
-    <button class="load-btn" onclick="openModal('http://facebook.com/')">Page 2</button>
-    <img src="ico.png" alt="Logo" class="logo-center">
-    <button class="load-btn" onclick="openModal('page3.html')">Page 3</button>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
-</div>
-<div class="container">
-<div class="video-slider">
-    <button id="prev-btn">❮</button>
-    <button id="next-btn">❯</button>
-<div class="slides">
-    <div class="video-container">
-        <video src="vid001.mp4" controls></video>
-        <div class="video-caption">Vidéo 1 - Présentation</div>
+
+    <div class="container">
+        <div class="video-slider">
+            <button id="prev-btn">❮</button>
+            <div class="slides">
+                <div class="video-container">
+                    <video src="vid001.mp4" controls></video>
+                    <div class="video-caption">Vidéo 1 - Présentation</div>
+                </div>
+                <div class="video-container">
+                    <video src="vid002.mp4" controls></video>
+                    <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
+                </div>
+                <div class="video-container">
+                    <video src="vid003.mp4" controls></video>
+                    <div class="video-caption">Vidéo 3 - Démo en direct</div>
+                </div>
+                <div class="video-container">
+                    <video src="vid004.mp4" controls></video>
+                    <div class="video-caption">Vidéo 4 - Témoignages</div>
+                </div>
+            </div>
+            <button id="next-btn">❯</button>
+        </div>
     </div>
-    <div class="video-container">
-        <video src="vid002.mp4" controls></video>
-        <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
-    </div>
-    <div class="video-container">
-        <video src="vid003.mp4" controls></video>
-        <div class="video-caption">Vidéo 3 - Démo en direct</div>
-    </div>
-    <div class="video-container">
-        <video src="vid004.mp4" controls></video>
-        <div class="video-caption">Vidéo 4 - Témoignages</div>
-    </div>
-</div>
-</div>
-</div>
-<div id="infos-container">
-<p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
-<p><strong>tel:</strong> +24166367935</p>
-<p><strong>namesite:</strong> Star-Briques-LTD</p>
-<p><strong>descriptsite:</strong> Star-Briques-LTD</p>
-<p><strong>colone4:</strong> Star-Briques-LTD</p>
-<p><strong>basdepage:</strong> Star-Briques-LTD</p>
-<p><strong>local:</strong> Akanda-Amissa transfo</p>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    let slides = document.querySelectorAll('.video-container');
-    let index = 0;
-    let prevBtn = document.getElementById('prev-btn');
-    let nextBtn = document.getElementById('next-btn');
 
-    function changeSlide(next = true) {
-        slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les vidéos
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let slides = document.querySelectorAll('.video-container');
+            let index = 0;
+            let prevBtn = document.getElementById('prev-btn');
+            let nextBtn = document.getElementById('next-btn');
 
-        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+            function changeSlide(next = true) {
+                slides.forEach(slide => slide.style.display = 'none');
+                index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+                slides[index].style.display = 'flex';
+            }
 
-        slides[index].style.display = 'flex'; // Affiche la vidéo active
-    }
+            prevBtn.addEventListener('click', function() { changeSlide(false); });
+            nextBtn.addEventListener('click', function() { changeSlide(true); });
 
-    prevBtn.addEventListener('click', function() {
-        changeSlide(false);
-    });
+            changeSlide();
+        });
+    </script>
 
-    nextBtn.addEventListener('click', function() {
-        changeSlide(true);
-    });
-
-    changeSlide(); // Affiche la première vidéo au chargement
-});
-</script>
-<div class='message-box'><p style='color:green; font-weight:bold;'>✅ Flyer sécurisé</p></div>
-<button class='share-btn' onclick='ouvrirPartage()'>Partager le Flyer</button>
-<script>
-function ouvrirPartage() {
-    var page = encodeURIComponent(window.location.href);
-    window.open('partage.php?partage=' + page, '_blank', 'width=600,height=400');
-}
-</script>
-<div class="social-container">
-    <a href="https://www.facebook.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
-    </a>
-    <a href="https://www.tiktok.com" target="_blank">
-        <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
-    </a>
-    <a href="https://www.whatsapp.com" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
-    </a>
-</div>
-<button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
-<div id='menuPanel' class='menu-panel'>
-<h2>Informations</h2>
-<p><span id='men1'></span></p>
-<p><span id='men2'></span></p>
-<p><span id='men3'></span></p>
-<p><span id='men4'></span></p>
-<p><span id='men5'></span></p>
-<p><span id='dwebid'></span></p>
-<p>Page générée par D-ω≡/&gt; - générator </p>
-</div>
-<style>
-.menu-btn {
-    position: fixed;
-    top: 10%;
-    left: 10px;
-    background-color: #642EFE;  background: rgba(100, 46, 254, 0.2);
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 1001;
-    border-radius: 5px;
-}
-
-.menu-panel {
-    position: fixed;
-    border-radius: 8px;
-    top: 10%;
-    left: -110%; /* ✅ Assure qu'il soit complètement caché */
-    width: 27%;
-    height: 78.3%;
-    background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
-    transition: left 0.3s ease-in-out;
-    padding: 20px;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    
-    /* ✅ Centre le contenu */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 65px;
-    overflow: hidden; /* ✅ Empêche tout débordement */
-}
-
-
-
-.menu-panel h2 {
-    text-align: center;
-    color: white;
-}
-
-.menu-panel p {
-    font-size: 16px;
-    color: white;
-    font-weight: bold;
-}
-
-
-/* ✅ Ajustements pour mobile */
-@media screen and (max-width: 768px) {
-    .menu-panel {
-        width: 90%;
-        left: -110%; /* ✅ Assure une totale invisibilité */
-        padding-top: 45px; 
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    .menu-btn {
-        font-size: 16px; /* ✅ Ajuste la taille du bouton */
-        padding: 8px;
-    }
-}
-
-
-</style>
-<script>
-function toggleMenu() {
-    let menuPanel = document.getElementById('menuPanel');
-    let audioEnter = new Audio('./Bruit/entre.mp3'); // 🎵 Son d'entrée
-    let audioExit = new Audio('./Bruit/sortie.mp3'); // 🎵 Son de sortie
-    
-    if (menuPanel.style.left === '-100%') {
-        menuPanel.style.left = '0';
-        audioEnter.play(); // 📢 Joue le son d'entrée
-    } else {
-        menuPanel.style.left = '-100%';
-        audioExit.play(); // 📢 Joue le son de sortie
-    }
-}
-
-
-// ✅ Décodage correct des caractères spéciaux avant insertion
-document.getElementById('men1').innerText = 'Star-Briques-LTD';
-document.getElementById('men2').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles  Des briques solides, insonorisantes, économiques — et des prix imbattables pour vos projets de construction.';
-document.getElementById('men3').innerText = 'Des prix imbattables pour vos projets de construction.';
-document.getElementById('men4').innerText = 'Chez STAR Briques, nous produisons des briques 100 % béton, sans fermeture de joint, pour une structure plus résistante et durable.';
-document.getElementById('men5').innerText = '';
-document.getElementById('men6').innerText = '';
-document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
-</script>
 </body>
 </html>
