@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D-web générator</title>
 <link rel="icon" href="ico.png" type="image/webp">
 <style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
@@ -258,19 +258,19 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 <div id="video-slider">
     <button id="prev-btn">❮</button>
     <div class="video-slide active">
-        <video src="vid001.mp4" controls></video>
+        <video src="vid001.mp4" controls muted></video>
         <div class="video-caption">Vidéo 1 - Présentation</div>
     </div>
     <div class="video-slide ">
-        <video src="vid002.mp4" controls></video>
+        <video src="vid002.mp4" controls muted></video>
         <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
     </div>
     <div class="video-slide ">
-        <video src="vid003.mp4" controls></video>
+        <video src="vid003.mp4" controls muted></video>
         <div class="video-caption">Vidéo 3 - Démo en direct</div>
     </div>
     <div class="video-slide ">
-        <video src="vid004.mp4" controls></video>
+        <video src="vid004.mp4" controls muted></video>
         <div class="video-caption">Vidéo 4 - Témoignages</div>
     </div>
     <button id="next-btn">❯</button>
@@ -278,43 +278,31 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ Script chargé');
-
     let slides = document.querySelectorAll('.video-slide');
-    let captions = document.querySelectorAll('.video-caption');
+    let videos = document.querySelectorAll('.video-slide video');
     let index = 0;
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
 
     function changeSlide(next = true) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        captions.forEach(caption => caption.classList.remove('active'));
+        slides.forEach((slide, idx) => {
+            slide.classList.remove('active');
+            videos[idx].pause(); // Stop toutes les vidéos
+            videos[idx].currentTime = 0; // Remet à zéro pour éviter une lecture en boucle
+        });
 
         index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
         slides[index].classList.add('active');
-        captions[index].classList.add('active');
-
-        console.log('📌 Slide actif :', index);
-    }
-
-    let autoSlide = setInterval(() => changeSlide(true), 15000);
-
-    function stopAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(() => changeSlide(true), 15000);
+        videos[index].play(); // Lance automatiquement la vidéo active
     }
 
     prevBtn.addEventListener('click', function() {
-        console.log('👈 Bouton Précédent cliqué');
         changeSlide(false);
-        stopAutoSlide();
     });
 
     nextBtn.addEventListener('click', function() {
-        console.log('👉 Bouton Suivant cliqué');
         changeSlide(true);
-        stopAutoSlide();
     });
 });
 </script>
