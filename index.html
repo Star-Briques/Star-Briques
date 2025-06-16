@@ -21,7 +21,11 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 .flag-right { right: 2%; } 
 
 /* ✅ Ajustement du logo */ 
-.logo-center { height: 40%; } 
+.logo-center {
+    width: 50px; /* Largeur spécifique */
+    height: 50px; /* Hauteur spécifique */
+}
+
 
 /* ✅ Image de profil */ 
 .profile-img { width: 120px; border-radius: 10px; position: absolute; top: 10px; right: 10px; } 
@@ -66,8 +70,8 @@ a, button { cursor: pointer; }
  z-index: 1000;
 }
 .logo-center {
- height: 30%;
- max-height: 30px;
+ height: 60%;
+ max-height: 70px;
 }
 .load-btn {
  background-color: transparent;
@@ -434,7 +438,6 @@ function toggleMenu() {
         menuPanel.style.left = '-100%';
         audioExit.play(); // 📢 Joue le son de sortie
     }
-  
 }
 
 
