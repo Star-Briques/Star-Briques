@@ -126,24 +126,24 @@ body {
     background-color: rgba(0, 0, 0, 0.2); 
     color: #642EFE; 
     font-weight: bold; 
-    margin: 0; 
+    margin: 0;
     padding: 0;
 } 
 
 .container { 
-    width: 40%; 
+    width: 40%;
     max-width: 600px;
-    height: auto; 
-    margin: auto; 
-    padding: 10px; 
-    margin-top: 7%; 
-    border-radius: 8px; 
-    background: rgba(0, 0, 0, 0.05); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24); 
-    position: relative; 
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    margin-top: 7%;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+    position: relative;
     background-image: url('https://via.placeholder.com/600x300'); /* Image test */
-    background-size: cover; 
-    background-position: center; 
+    background-size: cover;
+    background-position: center;
 } 
 
 .video-slider {
@@ -172,9 +172,10 @@ body {
 video {
     width: 100%;
     max-width: 100%;
-    height: 300px; /* Ajustable */
+    height: 300px;
+    max-height: 250px; /* ✅ Limite la hauteur sur mobile */
     border-radius: 10px;
-    object-fit: cover; /* Permet un affichage optimal */
+    object-fit: cover;
     background-color: black; /* Test visuel */
 }
 
@@ -207,22 +208,26 @@ video {
 #prev-btn { left: 10px; }
 #next-btn { right: 10px; }
 
+---
+
+### 📲 **Mise en page améliorée pour mobile :**
+```css
 @media screen and (max-width: 768px) { 
     .container { 
         width: 95%;
-        height: auto; /* Correction */
-        margin-top: 20%; 
+        height: auto;
+        margin-top: 15%; /* ✅ Moins agressif sur mobile */
         padding: 10px;
     } 
 
     .video-slider { 
-        width: 95%;  
-        margin-top: 10%;
+        width: 95%;
+        margin-top: 5%; /* ✅ Ajustement léger */
     } 
 
     video {
         width: 95%;
-        height: auto;
+        max-height: 200px; /* ✅ Réduction pour éviter le débordement */
     }
 
     .video-caption {
@@ -236,6 +241,7 @@ video {
         padding: 8px;
     }
 }
+
 
 </style>
 </head>
