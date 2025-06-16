@@ -136,6 +136,7 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
     overflow: hidden;
 }
 
+/* ✅ Conteneur des vidéos respectant les dimensions */
 .slides {
     display: flex;
     width: 400%;
@@ -148,15 +149,29 @@ background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; }
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Permet d'ajouter la caption dessus */
 }
 
 video {
     width: 100%;
-    max-width: 600px;
+    max-width: 100%;
     border-radius: 10px;
 }
 
-/* ✅ Boutons de navigation en CSS */
+/* ✅ Superposition du texte sur la vidéo */
+.video-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    pointer-events: none; /* Empêche que ça bloque l'interaction avec la vidéo */
+}
+
+/* ✅ Boutons de navigation bien placés */
 .nav {
     position: absolute;
     bottom: 10px;
@@ -192,6 +207,28 @@ input[type="radio"] {
     transform: translateX(-75%);
 }
 
+/* ✅ Boutons Précédent et Suivant */
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+#prev-btn { left: 10px; }
+#next-btn { right: 10px; }
+
+#prev-btn:hover, #next-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 /* ✅ Ajustements pour mobile */
 @media screen and (max-width: 768px) { 
     .container { 
@@ -209,6 +246,17 @@ input[type="radio"] {
     video {
         width: 95%;
         max-width: 100%;
+    }
+
+    .video-caption {
+        bottom: 5px;
+        left: 5px;
+        font-size: 12px;
+    }
+
+    #prev-btn, #next-btn {
+        font-size: 14px;
+        padding: 8px;
     }
 
     .nav label {
@@ -371,7 +419,7 @@ function toggleMenu() {
     let audioEnter = new Audio('./Bruit/entre.mp3'); // 🎵 Son d'entrée
     let audioExit = new Audio('./Bruit/sortie.mp3'); // 🎵 Son de sortie
     
-    if (menuPanel.style.left === '-100%') { 
+    if (menuPanel.style.left === '-100%') {
         menuPanel.style.left = '0';
         audioEnter.play(); // 📢 Joue le son d'entrée
     } else {
