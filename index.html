@@ -181,7 +181,7 @@ video {
 
 .video-caption {
     position: absolute;
-    bottom: 5%;
+    bottom: 10%;
     left: 20px;
     background: rgba(0, 0, 0, 0.6);
     color: white;
@@ -214,19 +214,19 @@ video {
 ```css
 @media screen and (max-width: 768px) { 
     .container { 
-        width: 95%;
+        width: 100%;
         height: auto;
         margin-top: 15%; /* ✅ Moins agressif sur mobile */
         padding: 10px;
     } 
 
     .video-slider { 
-        width: 95%;
+        width: 100%;
         margin-top: 5%; /* ✅ Ajustement léger */
     } 
 
     video {
-        width: 95%;
+        width: 100%;
         max-height: 200px; /* ✅ Réduction pour éviter le débordement */
     }
 
