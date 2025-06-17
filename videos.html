@@ -1,0 +1,198 @@
+<style> 
+@import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap');
+
+body { 
+    font-family: 'Papyrus', sans-serif; 
+    text-align: center; 
+    background-color: rgba(0, 0, 0, 0.2); 
+    color: #642EFE; 
+    font-weight: bold; 
+    margin: 0;
+    padding: 0;
+} 
+
+.container { 
+    width: 40%;
+    max-width: 600px;
+     height: 600px;
+    max-height: 850px;
+    margin: auto;
+    padding: 10px;
+    margin-top: 7%;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+    position: relative;
+    background-image: url('https://via.placeholder.com/600x300'); /* Image test */
+    background-size: cover;
+    background-position: center;
+} 
+
+.video-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 800px; /* ✅ Fixe la hauteur */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 400%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.video-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: auto;
+}
+
+video {
+    width: 100%;
+    max-width: 100%;
+    height: 600px;
+    max-height: 850px; /* ✅ Limite la hauteur sur mobile */
+    border-radius: 10px;
+    object-fit: contain; /* ✅ Meilleure netteté */
+    background-color: black; /* Test visuel */
+}
+
+.video-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+#prev-btn { left: 10px; }
+#next-btn { right: 10px; }
+
+/* 📲 **Mise en page améliorée pour mobile** */
+@media screen and (max-width: 768px) { 
+    .container { 
+        top: 13%;
+        width: 100%;
+        right: 3px;
+        left: 3px;
+        height: auto;
+        margin-top: 25%; /* ✅ Moins agressif sur mobile */
+        padding: 10px;
+    } 
+
+    .video-slider { 
+        top: 13%; /* ✅ Ajustement de la position */
+        width: 95%; /* ✅ Plus adapté aux écrans mobiles */
+        height: auto; /* ✅ Permet l'adaptation dynamique */
+    } 
+
+    video {
+        width: 90%; margin-left:-3%;
+        max-height: 250px; /* ✅ Ajustement pour éviter le flou */
+        object-fit: contain; /* ✅ Amélioration de la netteté */
+    }
+
+    .video-caption {
+        bottom: 5px;
+        left: 5px;
+        font-size: 12px;
+    }
+
+    #prev-btn, #next-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+</style>
+</head>
+<body>
+<div class="top-bar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
+    <button class="load-btn" onclick="openModal('http://facebook.com/')">Page 2</button>
+    <img src="ico.png" alt="Logo" class="logo-center">
+    <button class="load-btn" onclick="openModal('page3.html')">Page 3</button>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
+</div>
+<div class="container">
+<div class="video-slider">
+<button id="prev-btn">❮</button>
+<button id="next-btn">❯</button>
+<div class="slides">
+    <div class="video-container">
+        <video src="vid001.mp4" controls></video>
+        <div class="video-caption">Vidéo 1 - Présentation</div>
+    </div>
+    <div class="video-container">
+        <video src="vid002.mp4" controls></video>
+        <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
+    </div>
+    <div class="video-container">
+        <video src="vid003.mp4" controls></video>
+        <div class="video-caption">Vidéo 3 - Démo en direct</div>
+    </div>
+    <div class="video-container">
+        <video src="vid004.mp4" controls></video>
+        <div class="video-caption">Vidéo 4 - Témoignages</div>
+    </div>
+</div>
+</div>
+</div>
+<div id="infos-container">
+<p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
+<p><strong>tel:</strong> +24166367935</p>
+<p><strong>namesite:</strong> Star-Briques-LTD</p>
+<p><strong>descriptsite:</strong> Star-Briques-LTD</p>
+<p><strong>colone4:</strong> Star-Briques-LTD</p>
+<p><strong>basdepage:</strong> Star-Briques-LTD</p>
+<p><strong>local:</strong> Akanda-Amissa transfo</p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let slides = document.querySelectorAll('.video-container');
+    let index = 0;
+    let prevBtn = document.getElementById('prev-btn');
+    let nextBtn = document.getElementById('next-btn');
+
+    function changeSlide(next = true) {
+        slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les vidéos
+
+        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+
+        slides[index].style.display = 'flex'; // Affiche la vidéo active
+    }
+
+    prevBtn.addEventListener('click', function() {
+        changeSlide(false);
+    });
+
+    nextBtn.addEventListener('click', function() {
+        changeSlide(true);
+    });
+
+    changeSlide(); // Affiche la première vidéo au chargement
+});
+</script>
