@@ -150,6 +150,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 600px;
+    height: 800px; /* ✅ Fixe la hauteur */
     margin: auto;
     overflow: hidden;
 }
@@ -175,7 +176,7 @@ video {
     height: 800px;
     max-height: 250px; /* ✅ Limite la hauteur sur mobile */
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain; /* ✅ Meilleure netteté */
     background-color: black; /* Test visuel */
 }
 
@@ -208,15 +209,12 @@ video {
 #prev-btn { left: 10px; }
 #next-btn { right: 10px; }
 
----
-
-### 📲 **Mise en page améliorée pour mobile :**
-```css
+/* 📲 **Mise en page améliorée pour mobile** */
 @media screen and (max-width: 768px) { 
     .container { 
-        top:12%;
+        top: 12%;
         width: 100%;
-          right: 3px;
+        right: 3px;
         left: 3px;
         height: auto;
         margin-top: 25%; /* ✅ Moins agressif sur mobile */
@@ -224,13 +222,15 @@ video {
     } 
 
     .video-slider { 
-        width: 100%;
-        margin-top: 5%; /* ✅ Ajustement léger */
+        top: 13%; /* ✅ Ajustement de la position */
+        width: 95%; /* ✅ Plus adapté aux écrans mobiles */
+        height: auto; /* ✅ Permet l'adaptation dynamique */
     } 
 
     video {
         width: 100%;
-        max-height: 200px; /* ✅ Réduction pour éviter le débordement */
+        max-height: 250px; /* ✅ Ajustement pour éviter le flou */
+        object-fit: contain; /* ✅ Amélioration de la netteté */
     }
 
     .video-caption {
@@ -244,7 +244,6 @@ video {
         padding: 8px;
     }
 }
-
 
 </style>
 </head>
