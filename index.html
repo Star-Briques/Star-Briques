@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ajoute l’attribut autoplay à chaque vidéo
     videos.forEach(video => {
         video.setAttribute('autoplay', '');
-        video.muted = true; // 🔇 **Obligatoire pour l'autoplay sur certains navigateurs**
+        video.muted = false; // 🔇 **Obligatoire pour l'autoplay sur certains navigateurs**
     });
 
     function changeSlide(next = true) {
