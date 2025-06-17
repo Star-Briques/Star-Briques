@@ -288,33 +288,36 @@ document.addEventListener('DOMContentLoaded', function() {
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
 
-    function changeSlide(next = true) {
-        // ⏸️ Stoppe la vidéo actuelle avant de passer à la suivante
-        videos[index].pause();
+    // ✅ Ajoute `autoplay` et `muted` à toutes les vidéos
+    videos.forEach(video => {
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.muted = false; // 🔇 Démarrage forcé en mute
+        video.play(); // ▶️ Auto-démarrage forcé
+    });
 
-        // 🔄 Calcule l'index de la prochaine vidéo
+    function changeSlide(next = true) {
+        videos[index].pause(); // ⏸️ Stoppe la vidéo en cours
+
         index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
-        // 🎥 Affiche uniquement la vidéo active
         slides.forEach((slide, i) => {
             slide.style.display = i === index ? 'flex' : 'none';
         });
 
-        // ▶️ Démarre la nouvelle vidéo
-        videos[index].play();
+        videos[index].play(); // ▶️ Démarre la nouvelle vidéo automatiquement
     }
 
-    // Écouteurs d'événements pour les boutons "précédent" et "suivant"
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
     // 🔄 Passage automatique toutes les 15 secondes
-    setInterval(() => changeSlide(true), 15000);
+    setInterval(() => changeSlide(true), 10000);
 
-    // Affiche la première vidéo au chargement
-    changeSlide();
+    changeSlide(); // **Affiche et démarre la première vidéo**
 });
 </script>
+
 
 
 
