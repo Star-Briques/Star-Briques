@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D-web générator</title>
 <link rel="icon" href="ico.png" type="image/webp">
-<style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
+<style> 
+@import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
+
 /* ✅ Style général */ 
 body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
 
@@ -16,19 +18,11 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 
 /* ✅ Correction du positionnement des drapeaux sur PC */ 
 .flag-left, .flag-right { height: 50px; width: auto; border-radius: 8px; position: absolute; } 
-
 .flag-left { left: 0.7%; } 
 .flag-right { right: 2%; } 
 
 /* ✅ Ajustement du logo */ 
-.logo-center {
-    width: 50px; /* Largeur spécifique */
-    height: 50px; /* Hauteur spécifique */
-}
-
-
-/* ✅ Image de profil */ 
-.profile-img { width: 120px; border-radius: 10px; position: absolute; top: 10px; right: 10px; } 
+.logo-center { width: 50px; height: 50px; }
 
 /* ✅ Table d'informations */ 
 .table-info { width: 49%; border-collapse: collapse; margin-top: 10%; margin-left: 51%; } 
@@ -49,24 +43,23 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 body, div, span, p { cursor: default; } 
 a, button { cursor: pointer; } 
 
-
-        .top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 100%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 10px;
- flex-wrap: wrap;
- z-index: 1000;
+.top-bar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: auto;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    flex-wrap: wrap;
+    z-index: 1000;
 }
-        
-   .container { 
+
+.container { 
     width: 40%;
     max-width: 600px;
-     height: 400px;
+    height: 400px;
     max-height: 850px;
     margin: auto;
     padding: 10px;
@@ -75,13 +68,9 @@ a, button { cursor: pointer; }
     background: rgba(0, 0, 0, 0.05);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
     position: relative;
-    background-image: url('https://via.placeholder.com/600x300'); /* Image test */
-    background-size: cover;
-    background-position: center;
-} 
+}
 
-    
-    #infos-container {
+#infos-container {
     position: fixed;
     top: 10%;
     right: 3px;
@@ -92,35 +81,33 @@ a, button { cursor: pointer; }
     color: white;
 }
 
-/*------------------------------------------------------------ ✅ Adaptation pour mobile */ 
+/* ✅ Adaptation pour mobile */ 
 @media screen and (max-width: 768px) { 
-  .left-side, .right-side { flex: 1; display: flex; align-items: center; justify-content: center; } 
-  .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
-  .center { flex: 2; } 
+    .left-side, .right-side { flex: 1; display: flex; align-items: center; justify-content: center; } 
+    .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
+    .center { flex: 2; } 
 
-               .top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 99%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 5px;
- flex-wrap: wrap;
- z-index: 1000;
-}
-        
-        
-       .container { 
+    .top-bar {
+        position: fixed;
+        top: 0; left: 0;
+        width: 99%; height: auto;
+        background: rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 5px;
+        flex-wrap: wrap;
+        z-index: 1000;
+    }
+
+    .container { 
         width: 95%;
         right: 2.5%;
         left: -0.5%;
         height: 400px;
-        margin-top: 32%; /* ✅ Moins agressif sur mobile */
+        margin-top: 32%;
         padding: 10px;
     } 
-    
 
     #infos-container {
         position: relative;
@@ -133,69 +120,42 @@ a, button { cursor: pointer; }
         border-radius: 8px;
         color: white;
     }
-    
 } 
 </style>
-        
-        
-        
-        
-<style>
-.logo-center {
- height: 60%;
- max-height: 70px;
-}
-.load-btn {
- background-color: transparent;
- color: white;
- border: 2px solid white;
- border-radius: 8px;
- padding: 6px 12px;
- cursor: pointer;
- font-weight: bold;
- width: 10%;
- min-width: 80px;
- max-width: 100%;
- font-size: 14px;
- transition: 0.3s;
- z-index: 8001;
-}
-.load-btn:hover {
- background-color: rgba(255, 255, 255, 0.2);
-}
-</style>
-
 </head>
 <body>
+
 <div class="top-bar">
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
-    
     <img src="ico.png" alt="Logo" class="logo-center">
-    
     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
 </div>
+
 <div class="container">
-
+    <!-- ✅ Le contenu de videos.html sera chargé ici -->
 </div>
+
 <div id="infos-container">
-<p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
-<p><strong>tel:</strong> +24166367935</p>
-<p><strong>namesite:</strong> Star-Briques-LTD</p>
-<p><strong>descriptsite:</strong> Star-Briques-LTD</p>
-<p><strong>colone4:</strong> Star-Briques-LTD</p>
-<p><strong>basdepage:</strong> Star-Briques-LTD</p>
-<p><strong>local:</strong> Akanda-Amissa transfo</p>
+    <p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
+    <p><strong>tel:</strong> +24166367935</p>
+    <p><strong>namesite:</strong> Star-Briques-LTD</p>
+    <p><strong>descriptsite:</strong> Star-Briques-LTD</p>
+    <p><strong>colone4:</strong> Star-Briques-LTD</p>
+    <p><strong>basdepage:</strong> Star-Briques-LTD</p>
+    <p><strong>local:</strong> Akanda-Amissa transfo</p>
 </div>
-<script>
 
-<div class='message-box'><p style='color:green; font-weight:bold;'>✅ Flyer sécurisé</p></div>
-<button class='share-btn' onclick='ouvrirPartage()'>Partager le Flyer</button>
 <script>
-function ouvrirPartage() {
-    var page = encodeURIComponent(window.location.href);
-    window.open('partage.php?partage=' + page, '_blank', 'width=600,height=400');
-}
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("videos.html")
+    .then(response => response.text())
+    .then(data => {
+        document.querySelector(".container").innerHTML = data;
+    })
+    .catch(error => console.error("Erreur de chargement :", error));
+});
 </script>
+
 <div class="social-container">
     <a href="https://www.facebook.com" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
@@ -207,6 +167,10 @@ function ouvrirPartage() {
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
     </a>
 </div>
+
+</body>
+</html>
+
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
 <div id='menuPanel' class='menu-panel'>
 <h2>Informations</h2>
