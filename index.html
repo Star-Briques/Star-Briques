@@ -50,10 +50,23 @@ body, div, span, p { cursor: default; }
 a, button { cursor: pointer; } 
 
 
+        .top-bar {
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%; height: auto;
+ background: rgba(0, 0, 0, 0.2);
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ padding: 10px;
+ flex-wrap: wrap;
+ z-index: 1000;
+}
+        
    .container { 
     width: 40%;
     max-width: 600px;
-     height: 600px;
+     height: 400px;
     max-height: 850px;
     margin: auto;
     padding: 10px;
@@ -85,13 +98,26 @@ a, button { cursor: pointer; }
   .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
   .center { flex: 2; } 
 
-
+               .top-bar {
+ position: fixed;
+ top: 0; left: 0;
+ width: 99%; height: auto;
+ background: rgba(0, 0, 0, 0.2);
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ padding: 10px;
+ flex-wrap: wrap;
+ z-index: 1000;
+}
+        
+        
        .container { 
-        top: 17%;
-        width: 100%;
-        right: 3px;
-        left: 3px;
-        height: auto;
+        margin-top: 31%;
+        width: 95%;
+        right: 2.5%;
+        left: -0.5%;
+        height: 400px;
         margin-top: 25%; /* ✅ Moins agressif sur mobile */
         padding: 10px;
     } 
@@ -112,18 +138,6 @@ a, button { cursor: pointer; }
 } 
 </style>
 <style>
-.top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 100%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 10px;
- flex-wrap: wrap;
- z-index: 1000;
-}
 .logo-center {
  height: 60%;
  max-height: 70px;
