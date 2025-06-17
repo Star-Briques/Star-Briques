@@ -292,6 +292,9 @@ document.addEventListener('DOMContentLoaded', function() {
         video.muted = true; // 🔇 **Nécessaire pour certains navigateurs**
         video.setAttribute('autoplay', '');
         video.play(); // ▶️ **Démarre la vidéo immédiatement**
+        
+        // Ajoute un écouteur d'événement pour passer à la prochaine vidéo à la fin de la lecture
+        video.addEventListener('ended', () => changeSlide(true));
     });
 
     function changeSlide(next = true) {
@@ -309,11 +312,9 @@ document.addEventListener('DOMContentLoaded', function() {
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
-    // 🔄 **Changement automatique toutes les 10 secondes**
-    setInterval(() => changeSlide(true), 20000);
-
     changeSlide(); // **Affiche et démarre la première vidéo**
 });
+
 </script>
 
 
