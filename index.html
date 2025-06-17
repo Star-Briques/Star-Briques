@@ -246,7 +246,39 @@ a, button { cursor: pointer; }
         #prev-btn { left: 0%; }  
         #next-btn { right: 0%; }  
 
+
+
+
+
+                 .ltd-button {
+    position: absolute; 
+    top: 17%;
+    ackground-color: #FFD700;
+    color: #007bff;
+    font-size: 1em;
+    font-style: italic;      
+    font-weight: bold;
+    padding: 2px 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+               
+
+    
+
         @media screen and (max-width: 768px) { 
+
+                          .title {
+                font-size: 2.5em; margin-top:-10%;
+            }
+    .ltd-button {
+        left: 62%;  top: 17%;
             
             .video-slider { width: 100%; }
             video { max-height: 300px; }
@@ -360,6 +392,11 @@ function ouvrirPartage() {
     </a>
 </div>
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
+
+     <h1 class="title">Star Briques</h1>
+            
+            <button class="ltd-button">LTD</button>
+    
 <div id='menuPanel' class='menu-panel'>
 <h2>Informations</h2>
 <p><span id='men1'></span></p>
