@@ -49,6 +49,25 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 body, div, span, p { cursor: default; } 
 a, button { cursor: pointer; } 
 
+
+   .container { 
+    width: 40%;
+    max-width: 600px;
+     height: 600px;
+    max-height: 850px;
+    margin: auto;
+    padding: 10px;
+    margin-top: 7%;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+    position: relative;
+    background-image: url('https://via.placeholder.com/600x300'); /* Image test */
+    background-size: cover;
+    background-position: center;
+} 
+
+    
     #infos-container {
     position: fixed;
     top: 10%;
@@ -66,6 +85,17 @@ a, button { cursor: pointer; }
   .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
   .center { flex: 2; } 
 
+
+       .container { 
+        top: 13%;
+        width: 100%;
+        right: 3px;
+        left: 3px;
+        height: auto;
+        margin-top: 25%; /* ✅ Moins agressif sur mobile */
+        padding: 10px;
+    } 
+    
 
     #infos-container {
         position: relative;
@@ -117,136 +147,7 @@ a, button { cursor: pointer; }
  background-color: rgba(255, 255, 255, 0.2);
 }
 </style>
-<style> 
-@import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap');
 
-body { 
-    font-family: 'Papyrus', sans-serif; 
-    text-align: center; 
-    background-color: rgba(0, 0, 0, 0.2); 
-    color: #642EFE; 
-    font-weight: bold; 
-    margin: 0;
-    padding: 0;
-} 
-
-.container { 
-    width: 40%;
-    max-width: 600px;
-     height: 600px;
-    max-height: 850px;
-    margin: auto;
-    padding: 10px;
-    margin-top: 7%;
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-    position: relative;
-    background-image: url('https://via.placeholder.com/600x300'); /* Image test */
-    background-size: cover;
-    background-position: center;
-} 
-
-.video-slider {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    height: 800px; /* ✅ Fixe la hauteur */
-    margin: auto;
-    overflow: hidden;
-}
-
-.slides {
-    display: flex;
-    width: 400%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.video-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: auto;
-}
-
-video {
-    width: 100%;
-    max-width: 100%;
-    height: 600px;
-    max-height: 850px; /* ✅ Limite la hauteur sur mobile */
-    border-radius: 10px;
-    object-fit: contain; /* ✅ Meilleure netteté */
-    background-color: black; /* Test visuel */
-}
-
-.video-caption {
-    position: absolute;
-    bottom: 10%;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 16px;
-    pointer-events: none;
-}
-
-#prev-btn, #next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    z-index: 1001;
-}
-
-#prev-btn { left: 10px; }
-#next-btn { right: 10px; }
-
-/* 📲 **Mise en page améliorée pour mobile** */
-@media screen and (max-width: 768px) { 
-    .container { 
-        top: 13%;
-        width: 100%;
-        right: 3px;
-        left: 3px;
-        height: auto;
-        margin-top: 25%; /* ✅ Moins agressif sur mobile */
-        padding: 10px;
-    } 
-
-    .video-slider { 
-        top: 13%; /* ✅ Ajustement de la position */
-        width: 95%; /* ✅ Plus adapté aux écrans mobiles */
-        height: auto; /* ✅ Permet l'adaptation dynamique */
-    } 
-
-    video {
-        width: 90%; margin-left:-3%;
-        max-height: 250px; /* ✅ Ajustement pour éviter le flou */
-        object-fit: contain; /* ✅ Amélioration de la netteté */
-    }
-
-    .video-caption {
-        bottom: 5px;
-        left: 5px;
-        font-size: 12px;
-    }
-
-    #prev-btn, #next-btn {
-        font-size: 14px;
-        padding: 8px;
-    }
-}
-
-</style>
 </head>
 <body>
 <div class="top-bar">
