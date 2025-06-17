@@ -288,12 +288,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
 
-    // ✅ Ajoute `autoplay` et `muted` à toutes les vidéos
+    // Ajoute l’attribut autoplay à chaque vidéo
     videos.forEach(video => {
         video.setAttribute('autoplay', '');
-        video.setAttribute('muted', '');
-        video.muted = true; // 🔇 Démarrage forcé en mute
-        video.play(); // ▶️ Auto-démarrage forcé
+        video.muted = true; // 🔇 **Obligatoire pour l'autoplay sur certains navigateurs**
     });
 
     function changeSlide(next = true) {
@@ -305,18 +303,19 @@ document.addEventListener('DOMContentLoaded', function() {
             slide.style.display = i === index ? 'flex' : 'none';
         });
 
-        videos[index].play(); // ▶️ Démarre la nouvelle vidéo automatiquement
+        videos[index].play(); // ▶️ **Démarre la nouvelle vidéo**
     }
 
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
-    // 🔄 Passage automatique toutes les 15 secondes
-    setInterval(() => changeSlide(true), 10000);
+    // 🔄 **Changement automatique toutes les 15 secondes**
+    setInterval(() => changeSlide(true), 15000);
 
     changeSlide(); // **Affiche et démarre la première vidéo**
 });
 </script>
+
 
 
 
