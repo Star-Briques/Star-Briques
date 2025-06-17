@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vidéo Slider</title>
+    <title>Vidéo Slider Automatique</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap');
 
@@ -25,13 +25,11 @@
         .container { 
             width: 60%;
             max-width: 600px;
-            height: auto;
             margin: auto;
             padding: 10px;
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.05);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
-            position: relative;
             text-align: center;
         } 
 
@@ -57,7 +55,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            height: auto;
         }
 
         video {
@@ -66,6 +63,18 @@
             border-radius: 10px;
             object-fit: contain;
             background-color: black;
+        }
+
+        .video-caption {
+            position: absolute;
+            left: 5%;
+            bottom: 5%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            pointer-events: none;
         }
 
         #prev-btn, #next-btn {
@@ -85,22 +94,9 @@
         #prev-btn { left: 0%; }  
         #next-btn { right: 0%; }  
 
-        .video-caption {
-            position: absolute;
-            left: 5%;
-            bottom: 5%;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 16px;
-            pointer-events: none;
-        }
-
-        /* 📲 **Optimisation mobile** */
         @media screen and (max-width: 768px) { 
             .container { width: 90%; padding: 5px; }
-            .video-slider { width: 100%; height: auto; }
+            .video-slider { width: 100%; }
             video { max-height: 250px; }
             .video-caption { font-size: 12px; padding: 6px; }
             #prev-btn, #next-btn { font-size: 14px; padding: 8px; }
@@ -137,25 +133,28 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let slides = document.querySelectorAll('.video-container');
+            let videos = document.querySelectorAll('video');
             let index = 0;
             let prevBtn = document.getElementById('prev-btn');
             let nextBtn = document.getElementById('next-btn');
 
             function changeSlide(next = true) {
-                slides.forEach(slide => slide.style.display = 'none'); // Masque toutes les vidéos
+                videos[index].pause(); // ⏸️ Stoppe la vidéo actuelle
 
                 index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
-                slides[index].style.display = 'flex'; // Affiche la vidéo active
+                slides.forEach((slide, i) => {
+                    slide.style.display = i === index ? 'flex' : 'none';
+                });
+
+                videos[index].play(); // ▶️ Démarre la nouvelle vidéo
             }
 
-            prevBtn.addEventListener('click', function() {
-                changeSlide(false);
-            });
+            prevBtn.addEventListener('click', () => changeSlide(false));
+            nextBtn.addEventListener('click', () => changeSlide(true));
 
-            nextBtn.addEventListener('click', function() {
-                changeSlide(true);
-            });
+            // 🔄 Passage automatique toutes les 15 secondes
+            setInterval(() => changeSlide(true), 15000);
 
             changeSlide(); // Affiche la première vidéo au chargement
         });
