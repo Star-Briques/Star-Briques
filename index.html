@@ -279,7 +279,6 @@ a, button { cursor: pointer; }
             </div>
         </div>
     
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let slides = document.querySelectorAll('.video-container');
@@ -288,10 +287,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
 
-    // Ajoute l’attribut autoplay à chaque vidéo
+    // Ajoute l’attribut autoplay et mute au chargement
     videos.forEach(video => {
+        video.muted = true; // 🔇 **Nécessaire pour certains navigateurs**
         video.setAttribute('autoplay', '');
-        video.muted = false; // 🔇 **Obligatoire pour l'autoplay sur certains navigateurs**
+        video.play(); // ▶️ **Démarre la vidéo immédiatement**
     });
 
     function changeSlide(next = true) {
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
-    // 🔄 **Changement automatique toutes les 15 secondes**
+    // 🔄 **Changement automatique toutes les 10 secondes**
     setInterval(() => changeSlide(true), 10000);
 
     changeSlide(); // **Affiche et démarre la première vidéo**
