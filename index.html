@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ajoute l’attribut autoplay et mute au chargement
     videos.forEach(video => {
-        video.muted = true; // 🔇 **Nécessaire pour certains navigateurs**
+       
         video.setAttribute('autoplay', '');
         video.play(); // ▶️ **Démarre la vidéo immédiatement**
         
