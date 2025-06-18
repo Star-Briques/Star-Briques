@@ -308,11 +308,11 @@ a, button { cursor: pointer; }
                     <div class="video-caption">Vidéo 1 - Présentation</div>
                 </div>
                 <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls></video>
+                    <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls></video>
                     <div class="video-caption">Vidéo 2 - Fonctionnalités</div>
                 </div>
                 <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls></video>
+                    <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls></video>
                     <div class="video-caption">Vidéo 3 - Démo en direct</div>
                 </div>
                 <div class="video-container">
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Ajoute l’attribut autoplay et mute au chargement
     videos.forEach(video => {
-       
+         video.muted = true; // 🔇 **Nécessaire pour certains navigateurs**
         video.setAttribute('autoplay', '');
         video.play(); // ▶️ **Démarre la vidéo immédiatement**
         
