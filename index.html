@@ -257,7 +257,7 @@ a, button { cursor: pointer; }
 
 
                  .ltd-button {
-    position: absolute; 
+    position: absolute; z-index:-1;
     top: 14%; margin-left:6%;
     ackground-color: #FFD700;
     color: #007bff;
@@ -515,8 +515,8 @@ function toggleMenu() {
  
  
 // ✅ Décodage correct des caractères spéciaux avant insertion
-document.getElementById('men1').innerText = 'Star-Briques-LTD';
-document.getElementById('men2').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles  Des briques solides, insonorisantes, économiques — et des prix imbattables pour vos projets de construction.';
+document.getElementById('men1').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles.';
+document.getElementById('men2').innerText = 'Des briques solides, insonorisantes, économiques — et des prix imbattables pour vos projets de construction.';
 document.getElementById('men3').innerText = 'Des prix imbattables pour vos projets de construction.';
 document.getElementById('men4').innerText = 'Chez STAR Briques, nous produisons des briques 100 % béton, sans fermeture de joint, pour une structure plus résistante et durable.';
 document.getElementById('men5').innerText = '';
