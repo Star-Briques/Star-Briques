@@ -446,7 +446,7 @@ function ouvrirPartage() {
 }
 
 .menu-panel {
-    position: fixed;
+    position: fixed;  display: block;
     border-radius: 8px;
     top: 10%;
     left: -110%; /* ✅ Assure qu'il soit complètement caché */
@@ -484,7 +484,7 @@ function ouvrirPartage() {
 /* ✅ Ajustements pour mobile */
 @media screen and (max-width: 768px) {
     .menu-panel {
-        width: 90%;
+        width: 90%; display: hidden;
         left: -110%; /* ✅ Assure une totale invisibilité */
         padding-top: 45px; 
         background-color: rgba(0, 0, 0, 0.8);
