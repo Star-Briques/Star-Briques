@@ -91,9 +91,21 @@ a, button { cursor: pointer; }
 /*------------------------------------------------------------ ✅ Adaptation pour mobile--------------------------------------------- */ 
 @media screen and (max-width: 768px) { 
         
-  .flag-left, .flag-right { height: 40px; margin: 8px; position: static; } 
-.flag-left { left: 0.7%; } 
-.flag-right { right: 2%; } 
+ .flag-left, .flag-right {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    position: absolute; /* ✅ Remet en position absolue */
+    top: 8px;
+  }
+
+  .flag-left {
+    left: 1.5%; /* ✅ Plus près du bord gauche */
+  }
+
+  .flag-right {
+    right: 1.5%; /* ✅ Plus près du bord droit */
+  }
     
         
                .top-bar {
