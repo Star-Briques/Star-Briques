@@ -217,17 +217,12 @@ a, button { cursor: pointer; }
             background-color: black;
         }
 
-        .video-caption {
-            position: absolute;
-            left: 5%;
-            margin-bottom:18%;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 16px;
-            pointer-events: none;
-        }
+.video-caption {
+    position: absolute;
+    bottom: 10%; /* Plus bas */
+    left: 5%;
+}
+
 
         #prev-btn, #next-btn {
             position: absolute;
@@ -293,7 +288,13 @@ a, button { cursor: pointer; }
             
             .video-slider { width: 100%; }
             video { max-height: 150px; }
-            .video-caption { font-size: 12px; padding: 6px; margin-bottom:18%; }
+                .video-caption {
+        font-size: 14px;
+        padding: 6px;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
             #prev-btn, #next-btn { font-size: 14px; padding: 8px; }
         }
     </style>
