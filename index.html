@@ -310,7 +310,7 @@ a, button { cursor: pointer; }
       border-radius: 5px;
       cursor: pointer;
       transition: transform 0.3s ease-in-out;
-      z-index: 2;
+      z-index: -1;
     }
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
@@ -465,6 +465,12 @@ a, button { cursor: pointer; }
     videos.forEach(video => {
         video.muted = false;
     });
+});
+
+      // 🔄 Passage automatique toutes les 15 secondes
+    setInterval(() => changeSlide(true), 15000);
+
+    changeSlide(); // **Affiche et démarre la première vidéo**
 });
 
       
