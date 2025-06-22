@@ -390,33 +390,24 @@ a, button { cursor: pointer; }
   </div>
 
   <script>
-      document.addEventListener('DOMContentLoaded', function() {
-            let slides = document.querySelectorAll('.video-container');
-            let videos = document.querySelectorAll('video');
-            let index = 0;
-            let prevBtn = document.getElementById('prev-btn');
-            let nextBtn = document.getElementById('next-btn');
+      document.addEventListener('DOMContentLoaded', () => {
+      const slideWrapper = document.querySelector('.slides');
+      const slides = document.querySelectorAll('.video-container');
+      const videos = document.querySelectorAll('video');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      let index = 0;
+      let selectedVoice = null;
 
-            function changeSlide(next = true) {
-                videos[index].pause(); // ⏸️ Stoppe la vidéo actuelle
+      // Fixe la largeur du slider dynamiquement
+      slideWrapper.style.width = `${slides.length * 100}%`;
 
-                index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
+      // Positionne chaque slide à 100%
+      slides.forEach(slide => {
+        slide.style.flex = '0 0 100%';
+        slide.style.maxWidth = '100%';
+      });
 
-                slides.forEach((slide, i) => {
-                    slide.style.display = i === index ? 'flex' : 'none';
-                });
-
-                videos[index].play(); // ▶️ Démarre la nouvelle vidéo
-            }
-
-            prevBtn.addEventListener('click', () => changeSlide(false));
-            nextBtn.addEventListener('click', () => changeSlide(true));
-
-            // 🔄 Passage automatique toutes les 15 secondes
-            setInterval(() => changeSlide(true), 15000);
-
-            changeSlide(); // Affiche la première vidéo au chargement
-        });
     
       function chargerVoixMasculine() {
         const voix = speechSynthesis.getVoices();
