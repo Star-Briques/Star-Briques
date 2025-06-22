@@ -382,27 +382,39 @@ document.addEventListener('DOMContentLoaded', function() {
     let nextBtn = document.getElementById('next-btn');
     let selectedVoice = null;
 
-    // Préparer la liste des voix dès qu'elles sont disponibles
-    speechSynthesis.onvoiceschanged = () => {
-        const voices = speechSynthesis.getVoices();
-        // Essaie de prendre une voix française — sinon prends la première dispo
-        selectedVoice = voices.find(v => v.lang === 'fr-FR') || voices[0];
-    };
+    // Charger les voix disponibles et choisir une voix masculine française
+    function chargerVoixMasculine() {
+        const voix = speechSynthesis.getVoices();
+        selectedVoice = voix.find(v =>
+            v.lang === 'fr-FR' &&
+            (v.name.toLowerCase().includes('thomas') ||
+             v.name.toLowerCase().includes('paul') ||
+             v.name.toLowerCase().includes('male') ||
+             v.name.toLowerCase().includes('homme'))
+        ) || voix.find(v => v.lang === 'fr-FR') || voix[0];
+    }
+
+    // Certains navigateurs chargent les voix après un délai
+    if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.onvoiceschanged = chargerVoixMasculine;
+    } else {
+        chargerVoixMasculine();
+    }
 
     function lireCaption(index) {
         const caption = slides[index].querySelector('.video-caption')?.textContent;
         if (caption) {
             const utterance = new SpeechSynthesisUtterance(caption);
             utterance.lang = 'fr-FR';
-            utterance.rate = 1.1;   // ↔️ Ajuste ici la vitesse (1 = normal)
-            utterance.pitch = 1;    // 🔁 Optionnel : hauteur de voix
-            utterance.volume = 1;   // 🔊 Plein volume
+            utterance.rate = 1.05;  // ↔️ Vitesse légèrement ralentie
+            utterance.pitch = 1;    // 🎵 Ton neutre
+            utterance.volume = 1;
 
             if (selectedVoice) {
                 utterance.voice = selectedVoice;
             }
 
-            speechSynthesis.cancel(); // Arrête toute lecture en cours
+            speechSynthesis.cancel();
             speechSynthesis.speak(utterance);
         }
     }
@@ -416,7 +428,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function changeSlide(next = true) {
         videos[index].pause();
-
         index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
         slides.forEach((slide, i) => {
@@ -433,6 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
     changeSlide();
 });
 </script>
+
 
 
 
