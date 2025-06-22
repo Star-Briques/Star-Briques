@@ -493,22 +493,18 @@ a, button { cursor: pointer; }
     });
 
 
-  const musiqueFond = document.getElementById('musique-fond');
-
-musiqueFond.volume = 0.5; // ajuste le volume si besoin
-
-// Essaye de lancer la musique après interaction utilisateur
-document.addEventListener('click', () => {
-  musiqueFond.play().catch(err => {
-    console.warn("Lecture audio refusée jusqu'à interaction :", err);
-  });
-}, { once: true });
-
-
 const stopBtn = document.getElementById('stop-musique');
+
 stopBtn.addEventListener('click', () => {
-  musiqueFond.pause();
+  if (musiqueFond.paused) {
+    musiqueFond.play();
+    stopBtn.textContent = '⏸ Pause musique';
+  } else {
+    musiqueFond.pause();
+    stopBtn.textContent = '▶️ Reprendre musique';
+  }
 });
+
 
       
      // Démarre le défilement automatique toutes les 15 secondes
