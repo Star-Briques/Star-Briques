@@ -94,7 +94,26 @@ a, button { cursor: pointer; }
         display: flex;
         align-items: center;
     }
-    
+
+    .musique-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+.musique-btn:hover {
+  background-color: #0056b3;
+}
+
 
     
 /*------------------------------------------------------------ ✅ Adaptation pour mobile--------------------------------------------- */ 
@@ -181,6 +200,8 @@ a, button { cursor: pointer; }
 </head>
 <body>  
     <audio id="musique-fond" src="mp3001.mp3" autoplay preload="auto" loop></audio>
+    <button id="stop-musique" class="musique-btn">⏸ Stop musique</button>
+
 
 <div class="top-bar">
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
@@ -482,6 +503,12 @@ document.addEventListener('click', () => {
     console.warn("Lecture audio refusée jusqu'à interaction :", err);
   });
 }, { once: true });
+
+
+const stopBtn = document.getElementById('stop-musique');
+stopBtn.addEventListener('click', () => {
+  musiqueFond.pause();
+});
 
       
      // Démarre le défilement automatique toutes les 15 secondes
