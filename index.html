@@ -443,35 +443,141 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-        <div class="video-slider">
-            <button id="prev-btn">❮</button>
-            <button id="next-btn">❯</button>
-            <div class="slides">
-                <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls></video>
-                    <div class="video-caption">Star-Briques un prix qui séduisent, une qualité qui rassure.</div>
-                </div>
-                <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls></video>
-                    <div class="video-caption">Star-Briques s'engage aujourd'huit<br>Avec des prix défiant toute qualité </div>
-                </div>
-                <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid007.mp4" controls></video>
-                    <div class="video-caption">Pour la qualité et prix, Star-Briques fait le pari des deux.</div>
-                </div>
-                <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid008.mp4" controls></video>
-                    <div class="video-caption">Star-Briques une qualité béton, au prix qui ne fissure pas votre budget.</div>
-                </div>
 
-                      <div class="video-container">
-                    <video src="https://star-briques.github.io/Star-Briques/vid009.mp4" controls></video>
-                    <div class="video-caption">Star-Briques défie toute construction</div>
-                </div>
 
-                
-            </div>
-        </div>
+
+
+<div class="carousel-wrapper">
+  <button id="btn-prev">❮</button>
+  <div class="carousel-track">
+    <div class="carousel-item">
+      <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls muted autoplay></video>
+      <div class="caption">Star-Briques un prix qui séduisent, une qualité qui rassure.</div>
+    </div>
+    <div class="carousel-item">
+      <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls muted autoplay></video>
+      <div class="caption">Star-Briques s'engage aujourd'hui<br>Avec des prix défiant toute qualité</div>
+    </div>
+    <div class="carousel-item">
+      <video src="https://star-briques.github.io/Star-Briques/vid007.mp4" controls muted autoplay></video>
+      <div class="caption">Pour la qualité et prix, Star-Briques fait le pari des deux.</div>
+    </div>
+    <div class="carousel-item">
+      <video src="https://star-briques.github.io/Star-Briques/vid008.mp4" controls muted autoplay></video>
+      <div class="caption">Star-Briques une qualité béton, au prix qui ne fissure pas votre budget.</div>
+    </div>
+    <div class="carousel-item">
+      <video src="https://star-briques.github.io/Star-Briques/vid009.mp4" controls muted autoplay></video>
+      <div class="caption">Star-Briques défie toute construction.</div>
+    </div>
+  </div>
+  <button id="btn-next">❯</button>
+</div>
+
+<style>
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex-wrap: nowrap;
+  margin: auto;
+  padding: 20px;
+}
+#btn-prev, #btn-next {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  color: #222;
+}
+.carousel-track {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 720px;
+  overflow: hidden;
+  position: relative;
+}
+.carousel-item {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+video {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+.caption {
+  text-align: center;
+  padding: 10px 5px;
+  background: #fff;
+  font-size: 1rem;
+}
+@media (max-width: 600px) {
+  video {
+    max-height: 250px;
+  }
+  .caption {
+    font-size: 0.9rem;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.carousel-item');
+  const videos = document.querySelectorAll('.carousel-item video');
+  let index = 0;
+
+  function showSlide(newIndex) {
+    if (index !== newIndex) {
+      videos[index].pause();
+    }
+    items.forEach((el, i) => {
+      el.style.display = i === newIndex ? 'flex' : 'none';
+    });
+    videos[newIndex].play();
+    index = newIndex;
+  }
+
+  document.getElementById('btn-prev').addEventListener('click', () => {
+    showSlide((index - 1 + items.length) % items.length);
+  });
+
+  document.getElementById('btn-next').addEventListener('click', () => {
+    showSlide((index + 1) % items.length);
+  });
+
+  // Lecture automatique de la première vidéo
+  showSlide(index);
+
+  videos.forEach((video, i) => {
+    video.addEventListener('ended', () => {
+      showSlide((i + 1) % items.length);
+    });
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     
 
