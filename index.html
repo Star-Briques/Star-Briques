@@ -387,9 +387,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const voix = speechSynthesis.getVoices();
         selectedVoice = voix.find(v =>
             v.lang === 'fr-FR' &&
-            (v.name.toLowerCase().includes('thomas') || 
-             v.name.toLowerCase().includes('paul') ||
-             v.name.toLowerCase().includes('male') ||
+            (v.name.toLowerCase().includes('roland') || 
+           
              v.name.toLowerCase().includes('homme'))
         ) || voix.find(v => v.lang === 'fr-FR') || voix[0];
     }
