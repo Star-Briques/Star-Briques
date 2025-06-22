@@ -180,6 +180,8 @@ a, button { cursor: pointer; }
 
 </head>
 <body>
+    <audio id="musique-fond" src="mp3001.mp3" autoplay preload="auto" loop></audio>
+
 <div class="top-bar">
     <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
     
@@ -363,13 +365,13 @@ a, button { cursor: pointer; }
                 <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
           <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
-                    <audio src="mp3001.mp3" autoplay preload="auto"></audio>
+                   
 
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid003.mp4" controls muted autoplay></video>
           <div class="video-caption">Star-Briques un prix qui séduit, une qualité qui rassure.</div>
-                <audio src="mp3001.mp3" autoplay preload="auto"></audio>
+              
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls muted autoplay></video>
@@ -379,17 +381,17 @@ a, button { cursor: pointer; }
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls muted autoplay></video>
           <div class="video-caption">Des briques solides, insonorisantes, économiques — une qualité béton à prix doux.</div>
-                 <audio src="mp3001.mp3" autoplay preload="auto"></audio>
+                 
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid002.mp4" controls muted autoplay></video>
           <div class="video-caption">Des prix imbattables pour vos projets. Star-Briques défie toute construction.</div>
-                  <audio src="mp3001.mp3" autoplay preload="auto"></audio>
+                  
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid004.mp4" controls muted autoplay></video>
           <div class="video-caption">100 % béton, sans joint de fermeture. Une structure plus résistante et durable.</div>
-                  <audio src="mp3001.mp3" autoplay preload="auto"></audio>
+                 
         </div>
       </div>
       <button id="next-btn">❯</button>
@@ -470,26 +472,16 @@ a, button { cursor: pointer; }
     });
 
 
-      const audios = document.querySelectorAll('audio');
+  const musiqueFond = document.getElementById('musique-fond');
 
-function changeSlide(next = true) {
-  videos[index].pause();
-  audios[index].pause();
-  audios[index].currentTime = 0;
+musiqueFond.volume = 0.5; // ajuste le volume si besoin
 
-  index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
-
-  slideWrapper.style.transform = `translateX(-${index * 100}%)`;
-  
-  videos[index].play();
-
-  // Lecture automatique de la musique si elle est prête
-  audios[index].play().catch(err => {
-    console.warn("Lecture audio bloquée par le navigateur :", err);
+// Essaye de lancer la musique après interaction utilisateur
+document.addEventListener('click', () => {
+  musiqueFond.play().catch(err => {
+    console.warn("Lecture audio refusée jusqu'à interaction :", err);
   });
-
-  lireCaption(index);
-}
+}, { once: true });
 
       
      // Démarre le défilement automatique toutes les 15 secondes
