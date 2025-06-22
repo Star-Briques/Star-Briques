@@ -217,7 +217,12 @@ a, button { cursor: pointer; }
             
             <button class="ltd-button">LTD</button>
         
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slider STAR BRIQUES</title>
   <style>
     .video-slider {
       position: relative;
@@ -264,8 +269,7 @@ a, button { cursor: pointer; }
       width: 70%;
     }
 
-    #prev-btn,
-    #next-btn {
+    #prev-btn, #next-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -282,48 +286,8 @@ a, button { cursor: pointer; }
     #prev-btn { left: 0%; }
     #next-btn { right: 0%; }
 
-    .title {
-      margin-top: 5%;
-      color: #1E90FF;
-      font-size: 2em;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      animation: glow 2s ease-in-out infinite alternate;
-      margin-bottom: 40px;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
-      to { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
-    }
-
-    .ltd-button {
-      position: absolute;
-      top: 14%;
-      margin-left: 6%;
-      background-color: #FFD700;
-      color: #007bff;
-      font-size: 1em;
-      font-style: italic;
-      font-weight: bold;
-      padding: 2px 2px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-      z-index: -1;
-    }
-
     @media screen and (max-width: 768px) {
-      .title {
-        font-size: 1.7em;
-        margin-top: 20%;
-        margin-left: 6%;
-      }
-
-      .video-slider { width: 100%; }
       video { height: 250px; }
-
       .video-caption {
         font-size: 14px;
         padding: 6px;
@@ -332,19 +296,14 @@ a, button { cursor: pointer; }
         transform: translateX(-50%);
       }
 
-      #prev-btn,
-      #next-btn {
+      #prev-btn, #next-btn {
         font-size: 14px;
         padding: 8px;
       }
-
-      .ltd-button {
-        left: 65%;
-        top: 16%;
-      }
     }
   </style>
-
+</head>
+<body>
 
   <div class="video-slider">
     <button id="prev-btn">❮</button>
@@ -355,7 +314,7 @@ a, button { cursor: pointer; }
       </div>
       <div class="video-container">
         <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
-        <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles. Star-Briques s'engage aujourd'hui avec des prix défiant toute qualité.</div>
+        <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
       </div>
       <div class="video-container">
         <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls muted autoplay></video>
@@ -363,15 +322,15 @@ a, button { cursor: pointer; }
       </div>
       <div class="video-container">
         <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls muted autoplay></video>
-        <div class="video-caption">Des briques solides, insonorisantes, économiques — et des prix imbattables, pour vos projets de construction. Une qualité béton, au prix qui ne fissure pas votre budget.</div>
+        <div class="video-caption">Des briques solides, insonorisantes, économiques — une qualité béton à prix doux.</div>
       </div>
       <div class="video-container">
         <video src="https://star-briques.github.io/Star-Briques/vid002.mp4" controls muted autoplay></video>
-        <div class="video-caption">Des prix imbattables pour vos projets de construction. Star-Briques défie toute construction.</div>
+        <div class="video-caption">Des prix imbattables pour vos projets. Star-Briques défie toute construction.</div>
       </div>
       <div class="video-container">
         <video src="https://star-briques.github.io/Star-Briques/vid004.mp4" controls muted autoplay></video>
-        <div class="video-caption">Chez STAR Briques, nous produisons des briques 100 % béton, sans fermeture de joint, pour une structure plus résistante et durable.</div>
+        <div class="video-caption">100 % béton, sans joint de fermeture. Une structure plus résistante et durable.</div>
       </div>
     </div>
     <button id="next-btn">❯</button>
@@ -382,19 +341,24 @@ a, button { cursor: pointer; }
       const slideWrapper = document.querySelector('.slides');
       const slides = document.querySelectorAll('.video-container');
       const videos = document.querySelectorAll('video');
-      let index = 0;
       const prevBtn = document.getElementById('prev-btn');
       const nextBtn = document.getElementById('next-btn');
+      let currentIndex = 0;
       let selectedVoice = null;
+
+      // Ajustement dynamique de la largeur de la piste
+      slideWrapper.style.width = `${slides.length * 100}%`;
+      slides.forEach(slide => {
+        slide.style.flex = '0 0 100%';
+        slide.style.maxWidth = '100%';
+      });
 
       function chargerVoixMasculine() {
         const voix = speechSynthesis.getVoices();
         selectedVoice = voix.find(v =>
           v.lang === 'fr-FR' &&
-          (v.name.toLowerCase().includes('thomas') ||
-            v.name.toLowerCase().includes('paul') ||
-            v.name.toLowerCase().includes('male') ||
-            v.name.toLowerCase().includes('homme'))
+          (v.name.toLowerCase().includes('thomas') || v.name.toLowerCase().includes('paul') ||
+           v.name.toLowerCase().includes('homme') || v.name.toLowerCase().includes('male'))
         ) || voix.find(v => v.lang === 'fr-FR') || voix[0];
       }
 
@@ -404,10 +368,10 @@ a, button { cursor: pointer; }
         chargerVoixMasculine();
       }
 
-      function lireCaption(i) {
-        const caption = slides[i].querySelector('.video-caption')?.textContent;
-        if (caption) {
-          const utterance = new SpeechSynthesisUtterance(caption);
+      function lireCaption(index) {
+        const captionText = slides[index].querySelector('.video-caption')?.textContent;
+        if (captionText) {
+          const utterance = new SpeechSynthesisUtterance(captionText);
           utterance.lang = 'fr-FR';
           utterance.rate = 1.05;
           utterance.pitch = 1;
@@ -419,31 +383,30 @@ a, button { cursor: pointer; }
       }
 
       function changeSlide(next = true) {
-        videos[index].pause();
-        index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
-        slideWrapper.style.transform = `translateX(-${index * 100}%)`;
-        videos[index].play();
-        lireCaption(index);
+        videos[currentIndex].pause();
+        currentIndex = next ? (currentIndex + 1) % slides.length : (currentIndex - 1 + slides.length) % slides.length;
+        slideWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        videos[currentIndex].play();
+        lireCaption(currentIndex);
       }
 
       prevBtn.addEventListener('click', () => changeSlide(false));
       nextBtn.addEventListener('click', () => changeSlide(true));
 
+      // Init
       videos.forEach((video, i) => {
         video.muted = true;
-        video.setAttribute('autoplay', '');
         video.play();
         video.addEventListener('ended', () => changeSlide(true));
       });
 
-      // init position
       slideWrapper.style.transform = `translateX(0%)`;
-      lireCaption(index);
+      lireCaption(currentIndex);
     });
   </script>
 
-
-
+</body>
+</html>
 
 
 
