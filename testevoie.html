@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Voix Caption</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .video-caption {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #333;
+      font-style: italic;
+    }
+
+    .controls {
+      margin: 25px auto;
+      max-width: 600px;
+      padding: 10px;
+    }
+
+    select, input[type="range"] {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎬 Lecture vocale du caption</h2>
+
+  <video id="maVideo" autoplay muted loop>
+    <source src="https://star-briques.github.io/Star-Briques/vid003.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+
+  <div class="video-caption" id="caption">Star-Briques : un prix qui séduit, une qualité qui rassure.</div>
+
+  <div class="controls">
+    <label for="voiceSelect">Voix :</label>
+    <select id="voiceSelect"></select>
+
+    <label for="rateSlider">Vitesse :</label>
+    <input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="1.05">
+    <span id="rateValue">1.05</span>
+  </div>
+
+  <script>
+    const captionText = document.getElementById("caption").textContent;
+    const voiceSelect = document.getElementById("voiceSelect");
+    const rateSlider = document.getElementById("rateSlider");
+    const rateValue = document.getElementById("rateValue");
+    let voices = [];
+
+    function populateVoiceList() {
+      voices = speechSynthesis.getVoices();
+      voiceSelect.innerHTML = '';
+
+      voices.forEach((voice, i) => {
+        if (voice.lang.startsWith('fr')) {
+          const option = document.createElement('option');
+          option.value = i;
+          option.textContent = `${voice.name} (${voice.lang})`;
+          voiceSelect.appendChild(option);
+
+          if (
+            voice.name.toLowerCase().includes('thomas') ||
+            voice.name.toLowerCase().includes('paul') ||
+            voice.name.toLowerCase().includes('homme') ||
+            voice.name.toLowerCase().includes('male')
+          ) {
+            voiceSelect.value = i;
+          }
+        }
+      });
+    }
+
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+    if (speechSynthesis.getVoices().length > 0) {
+      populateVoiceList();
+    }
+
+    rateSlider.addEventListener('input', () => {
+      rateValue.textContent = rateSlider.value;
+    });
+
+    function lireCaption() {
+      if (voices.length === 0) return;
+
+      const utterance = new SpeechSynthesisUtterance(captionText);
+      utterance.voice = voices[voiceSelect.value];
+      utterance.rate = parseFloat(rateSlider.value);
+      utterance.pitch = 1;
+      utterance.volume = 1;
+      utterance.lang = 'fr-FR';
+
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    }
+
+    // Lire automatiquement après un court délai au chargement
+    window.addEventListener("load", () => {
+      setTimeout(() => lireCaption(), 1000);
+    });
+  </script>
+
+</body>
+</html>
