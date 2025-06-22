@@ -459,6 +459,15 @@ a, button { cursor: pointer; }
       slideWrapper.style.transform = `translateX(0%)`;
       lireCaption(index);
     });
+
+
+      document.getElementById('unmute-btn').addEventListener('click', function() {
+    videos.forEach(video => {
+        video.muted = false;
+    });
+});
+
+      
   </script>
 
 </body>
