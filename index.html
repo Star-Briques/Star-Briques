@@ -381,18 +381,25 @@ document.addEventListener('DOMContentLoaded', function() {
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
 
-    // Ajoute l’attribut autoplay et mute au chargement
-    videos.forEach(video => {
-         video.muted = true; // 🔇 **Nécessaire pour certains navigateurs**
+    function lireCaption(index) {
+        const caption = slides[index].querySelector('.video-caption')?.textContent;
+        if (caption) {
+            const utterance = new SpeechSynthesisUtterance(caption);
+            utterance.lang = 'fr-FR'; // tu peux mettre 'en-US' si tu veux une voix anglaise
+            window.speechSynthesis.cancel(); // stoppe les précédentes lectures
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    videos.forEach((video, i) => {
+        video.muted = true;
         video.setAttribute('autoplay', '');
-        video.play(); // ▶️ **Démarre la vidéo immédiatement**
-        
-        // Ajoute un écouteur d'événement pour passer à la prochaine vidéo à la fin de la lecture
+        video.play();
         video.addEventListener('ended', () => changeSlide(true));
     });
 
     function changeSlide(next = true) {
-        videos[index].pause(); // ⏸️ Stoppe la vidéo en cours
+        videos[index].pause();
 
         index = next ? (index + 1) % slides.length : (index - 1 + slides.length) % slides.length;
 
@@ -400,16 +407,17 @@ document.addEventListener('DOMContentLoaded', function() {
             slide.style.display = i === index ? 'flex' : 'none';
         });
 
-        videos[index].play(); // ▶️ **Démarre la nouvelle vidéo**
+        videos[index].play();
+        lireCaption(index); // 🔊 Lecture automatique du caption
     }
 
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
-    changeSlide(); // **Affiche et démarre la première vidéo**
+    changeSlide(); // Démarre à la première vidéo
 });
-
 </script>
+
 
 
 
