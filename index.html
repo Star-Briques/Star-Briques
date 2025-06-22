@@ -380,14 +380,30 @@ document.addEventListener('DOMContentLoaded', function() {
     let index = 0;
     let prevBtn = document.getElementById('prev-btn');
     let nextBtn = document.getElementById('next-btn');
+    let selectedVoice = null;
+
+    // Préparer la liste des voix dès qu'elles sont disponibles
+    speechSynthesis.onvoiceschanged = () => {
+        const voices = speechSynthesis.getVoices();
+        // Essaie de prendre une voix française — sinon prends la première dispo
+        selectedVoice = voices.find(v => v.lang === 'fr-FR') || voices[0];
+    };
 
     function lireCaption(index) {
         const caption = slides[index].querySelector('.video-caption')?.textContent;
         if (caption) {
             const utterance = new SpeechSynthesisUtterance(caption);
-            utterance.lang = 'fr-FR'; // tu peux mettre 'en-US' si tu veux une voix anglaise
-            window.speechSynthesis.cancel(); // stoppe les précédentes lectures
-            window.speechSynthesis.speak(utterance);
+            utterance.lang = 'fr-FR';
+            utterance.rate = 1.1;   // ↔️ Ajuste ici la vitesse (1 = normal)
+            utterance.pitch = 1;    // 🔁 Optionnel : hauteur de voix
+            utterance.volume = 1;   // 🔊 Plein volume
+
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            }
+
+            speechSynthesis.cancel(); // Arrête toute lecture en cours
+            speechSynthesis.speak(utterance);
         }
     }
 
@@ -408,15 +424,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         videos[index].play();
-        lireCaption(index); // 🔊 Lecture automatique du caption
+        lireCaption(index);
     }
 
     prevBtn.addEventListener('click', () => changeSlide(false));
     nextBtn.addEventListener('click', () => changeSlide(true));
 
-    changeSlide(); // Démarre à la première vidéo
+    changeSlide();
 });
 </script>
+
 
 
 
