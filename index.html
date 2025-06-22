@@ -308,7 +308,7 @@ a, button { cursor: pointer; }
       transition: transform 0.3s ease-in-out;
       z-index: -1;
     }
-
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
       .title {
         font-size: 1.7em;
@@ -336,12 +336,22 @@ a, button { cursor: pointer; }
         left: 50%;
         transform: translateX(-50%);
       }
+#prev-btn,
+#next-btn {
+  top: 45%;
+  font-size: 16px;
+  padding: 6px;
+  z-index: 1002;
+}
 
-      #prev-btn,
-      #next-btn {
-        font-size: 14px;
-        padding: 8px;
-      }
+#prev-btn {
+  left: 4%;
+}
+
+#next-btn {
+  right: 4%;
+}
+
 
       .ltd-button {
         left: 65%;
