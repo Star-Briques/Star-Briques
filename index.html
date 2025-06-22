@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Charger les voix disponibles et choisir une voix masculine française
     function chargerVoixMasculine() {
         const voix = speechSynthesis.getVoices();
-        selectedVoice = voix.find(v =>
+        selectedVoice = voix.find(v => 
             v.lang === 'fr-FR' &&
             (v.name.toLowerCase().includes('roland') || 
            
