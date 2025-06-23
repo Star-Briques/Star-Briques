@@ -315,32 +315,17 @@ a, button { cursor: pointer; }
       background-color: black;
     }
 
-.video-caption {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  bottom: 34%;
-  left: 7%;
-  width: 70%;
-  padding: 10px 15px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border-radius: 5px;
-  font-size: 1.3rem;
-  text-align: center;
-}
-
-.caption-slide {
-  display: none;
-  width: 100%;
-}
-
-.caption-slide.active {
-  display: block;
-}
-
+    .video-caption {
+      position: absolute;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+      border-radius: 5px;
+      bottom: 34%;
+      left: 7%;
+      width: 70%;
+      z-index: 2;
+    }
 
     #prev-btn,
     #next-btn {
@@ -362,7 +347,30 @@ a, button { cursor: pointer; }
     #prev-btn { left: 0%; }
     #next-btn { right: 0%; }
 
+   .caption-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 15px;
+  text-align: center;
+  color: white;
+  font-size: 1.3rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
 
+.caption-slide {
+  display: none;
+  width: 100%;
+}
+
+.caption-slide.active {
+  display: block;
+}
 
 
 
@@ -408,12 +416,12 @@ a, button { cursor: pointer; }
 
                 <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
-<div class="video-caption">
-  <div class="caption-slide active">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
-  <div class="caption-slide">Un choix solide pour vos constructions modernes.</div>
-  <div class="caption-slide">Qualité, durabilité et innovation – c’est notre promesse.</div>
-</div>
-
+          <div class="video-caption">
+  <div class="caption-slider">
+    <div class="caption-slide active">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
+    <div class="caption-slide">Un choix solide pour vos constructions modernes.</div>
+    <div class="caption-slide">Qualité, durabilité et innovation – c’est notre promesse.</div>
+  </div>
 </div>
 
                    
@@ -756,5 +764,3 @@ document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 </script>
 </body>
 </html>
-
-
