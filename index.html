@@ -464,7 +464,7 @@ a, button { cursor: pointer; }
           utterance.lang = 'fr-FR';
           utterance.rate = 1.05;
           utterance.pitch = 1;
-          utterance.volume = 1;
+          utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
           speechSynthesis.cancel();
           speechSynthesis.speak(utterance);
@@ -495,6 +495,7 @@ a, button { cursor: pointer; }
 
 
 const musiqueFond = document.getElementById('musique-fond');
+      musiqueFond.volume = 0.3; // ajuste le volume si besoin
 const stopBtn = document.getElementById('stop-musique');
 
 let musiqueInitiee = false;
