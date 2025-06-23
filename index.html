@@ -576,6 +576,23 @@ a, button { cursor: pointer; }
       transition: transform 0.3s ease-in-out;
       z-index: -1;
     }
+
+     .caption-slide {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.caption-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+      
+      
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
 
@@ -802,6 +819,31 @@ function arreterMiniSlider(i) {
   }
 }
 
+function lancerMiniSlider(i) {
+  const captionSpans = slides[i].querySelectorAll('.caption-slide');
+  let current = 0;
+
+  // Tout masquer au début
+  captionSpans.forEach(span => span.classList.remove('active'));
+  captionSpans[0]?.classList.add('active');
+
+  const intervalId = setInterval(() => {
+    captionSpans[current]?.classList.remove('active');
+    current = (current + 1) % captionSpans.length;
+    captionSpans[current]?.classList.add('active');
+  }, 3000); // changement toutes les 3 secondes
+
+  // Enregistre l’ID pour pouvoir l’arrêter plus tard
+  slides[i].dataset.intervalId = intervalId;
+}
+
+function arreterMiniSlider(i) {
+  const intervalId = slides[i].dataset.intervalId;
+  if (intervalId) {
+    clearInterval(intervalId);
+    delete slides[i].dataset.intervalId;
+  }
+}
 
       
   </script>
