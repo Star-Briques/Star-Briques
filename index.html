@@ -504,7 +504,7 @@ slideGroups.forEach(slider => {
     captions[index].classList.remove('active');
     index = (index + 1) % captions.length;
     captions[index].classList.add('active');
-  }, 4000); // change toutes les 4 secondes
+  }, 5000); // change toutes les 5 secondes
 });
 
 
@@ -533,7 +533,7 @@ slideGroups.forEach(slider => {
         if (caption) {
           const utterance = new SpeechSynthesisUtterance(caption);
           utterance.lang = 'fr-FR';
-          utterance.rate = 0.8;
+          utterance.rate = 1;
           utterance.pitch = 1;
           utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
