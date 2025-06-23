@@ -6,7 +6,7 @@
 <title>Star Briques</title>
 <link rel="icon" href="ico.png" type="image/webp">
 <style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
-/* ✅ Style général */  
+/* ✅ Style général */ 
 body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
 
 /* ✅ Correction du positionnement des drapeaux sur PC */ 
@@ -199,196 +199,6 @@ a, button { cursor: pointer; }
 
 </head>
 <body>  
-
-
-<div class="top-bar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
-    
-    <img src="ico.png" alt="Logo" class="logo-center">
-    
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
-</div>
-        
-        
-             <h1 class="title">Star Briques</h1>
-            
-            <button class="ltd-button">LTD</button>
-        
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Star Briques</title>
-<link rel="icon" href="ico.png" type="image/webp">
-<style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
-/* ✅ Style général */  
-body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
-
-
- 
-    
-/* ✅ Image de profil */ 
-.profile-img { width: 120px; border-radius: 10px; position: absolute; top: 10px; right: 10px; } 
-
-/* ✅ Table d'informations */ 
-.table-info { width: 49%; border-collapse: collapse; margin-top: 10%; margin-left: 51%; } 
-
-.table-info td { padding: 4px; text-align: center; border: none; color: black; }  
-
-/* ✅ Icônes sociales */ 
-.social-container { position: fixed; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 10px; } 
-
-.social-icon { width: 30px; transition: transform 0.3s ease; } 
-.social-icon:hover { transform: scale(1.1); } 
-
-
-    #infos-container {
-    position: fixed;
-    top: 10%;
-    right: 3px;
-    width: 27%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 8px;
-    color: white;
-}
-
-/* Style du bouton de localisation */
-    .location-btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 4px 4px;
-        background: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .location-btn:hover {
-        background: #45a049;
-        transform: translateY(-2px);
-    }
-
-    .location-icon {
-        display: flex;
-        align-items: center;
-    }
-
-    .musique-btn {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
-}
-.musique-btn:hover {
-  background-color: #0056b3;
-}
-
-
-    
-/*------------------------------------------------------------ ✅ Adaptation pour mobile--------------------------------------------- */ 
-@media screen and (max-width: 768px) { 
-        
- .flag-left, .flag-right {
-    height: 40px;
-    width: auto;
-    border-radius: 8px;
-    position: absolute; /* ✅ Remet en position absolue */
-    top: 8px;
-  }
-
-  .flag-left {
-    left: 1.5%; /* ✅ Plus près du bord gauche */
-  }
-
-  .flag-right {
-    right: 1.5%; /* ✅ Plus près du bord droit */
-  }
-    
-        
-               .top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 99%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 5px; padding-left: 0px;
- flex-wrap: wrap;
- z-index: 1000;
-}
-        
-         
-
-    
-
-    #infos-container {
-        position: relative;
-        margin-top: 16%;
-        right: 3px;
-        left: 3px;
-        width: 95%; 
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px;
-        border-radius: 8px;
-        color: white;
-    }
-    
-}
-
-</style>
-        
-         
-        
-        
-<style>
-.logo-center {
- height: 60%;
- max-height: 70px;
-}
-.load-btn {
- background-color: transparent;
- color: white;
- border: 2px solid white;
- border-radius: 8px;
- padding: 6px 12px;
- cursor: pointer;
- font-weight: bold;
- width: 10%;
- min-width: 80px;
- max-width: 100%;
- font-size: 14px;
- transition: 0.3s;
- z-index: 8001;
-}
-.load-btn:hover {
- background-color: rgba(255, 255, 255, 0.2);
-}
-</style>
-
-</head>
-<body>  
    <audio id="musique-fond" src="musique-intro.mp3" preload="auto" loop></audio>
 <button id="stop-musique" class="musique-btn">▶️</button>
 
@@ -412,145 +222,9 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Star Briques</title>
-<link rel="icon" href="ico.png" type="image/webp">
-<style>
-
-/* Style du bouton de localisation */
-    .location-btn {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 4px 4px;
-        background: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
- 
-    .location-btn:hover {
-        background: #45a049;
-        transform: translateY(-2px);
-    }
-
-    .location-icon {
-        display: flex;
-        align-items: center;
-    }
-
-    .musique-btn {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 100;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
-}
-.musique-btn:hover {
-  background-color: #0056b3;
-}
-
-
-    
-/*------------------------------------------------------------ ✅ Adaptation pour mobile--------------------------------------------- */ 
-@media screen and (max-width: 768px) { 
-        
- .flag-left, .flag-right {
-    height: 40px;
-    width: auto;
-    border-radius: 8px;
-    position: absolute; /* ✅ Remet en position absolue */
-    top: 8px;
-  }
-
-  .flag-left {
-    left: 1.5%; /* ✅ Plus près du bord gauche */
-  }
-
-  .flag-right {
-    right: 1.5%; /* ✅ Plus près du bord droit */
-  }
-    
-        
-               .top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 99%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 5px; padding-left: 0px;
- flex-wrap: wrap;
- z-index: 1000;
-}
-        
-         
-
-    
-
-    #infos-container {
-        position: relative;
-        margin-top: 16%;
-        right: 3px;
-        left: 3px;
-        width: 95%; 
-        background: rgba(0, 0, 0, 0.5);
-        padding: 5px;
-        border-radius: 8px;
-        color: white;
-    }
-    
-}
-
-</style>
-        
-         
-        
-        
-<style>
-.logo-center {
- height: 60%;
- max-height: 70px;
-}
-.load-btn {
- background-color: transparent;
- color: white;
- border: 2px solid white;
- border-radius: 8px;
- padding: 6px 12px;
- cursor: pointer;
- font-weight: bold;
- width: 10%;
- min-width: 80px;
- max-width: 100%;
- font-size: 14px;
- transition: 0.3s;
- z-index: 8001;
-}
-.load-btn:hover {
- background-color: rgba(255, 255, 255, 0.2);
-}
-</style>
-
-</head>
-<body>  
-   <audio id="musique-fond" src="musique-intro.mp3" preload="auto" loop></audio>
-<button id="stop-musique" class="musique-btn">▶️</button>
-
-   
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slider Star-Briques</title>
   <style>
   .title {
       margin-top: 5%;
@@ -702,7 +376,8 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
       }
     }
   </style>
-
+</head>
+<body>
 
   <div class="container">
     <div class="video-slider">
@@ -849,6 +524,9 @@ stopBtn.addEventListener('click', () => {
       
   </script>
 
+</body>
+</html>
+
 
 
 
@@ -868,14 +546,12 @@ stopBtn.addEventListener('click', () => {
         </a></strong></p>
 <p><strong>
 
-                           <button class="location-btn" onclick="window.open('https://maps.app.goo.gl/mstqB8F67tw7NDFm6?g_st=awb', '_blank')">
                 <div class="location-icon">
                     <svg viewBox="0 0 24 24" width="24" height="24">
                         <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    Akanda-Amissa-Transfo
                     </svg>
                 </div>
-                <span>Akanda / Amissa transfo </span>
-            </button>
 </strong></p>
 </div>
 
@@ -928,108 +604,6 @@ function ouvrirPartage() {
         </a>
     
 </div>
-
-
-
-        
-        
-        
-        
-        
-<div id="infos-container">
-<p><strong>nom-prenom:</strong> Star-Briques-LTD</p>
-<p><strong>namesite:</strong>+24166103432</p>
-<p><strong>          <a href="https://wa.me/+24166103432" target="_blank">  
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">  
-        </a></strong></p>
-<p><strong>
-
-                           <button class="location-btn" onclick="window.open('https://maps.app.goo.gl/mstqB8F67tw7NDFm6?g_st=awb', '_blank')">
-                <div class="location-icon">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                </div>
-                <span>Akanda / Amissa transfo </span>
-            </button>
-</strong></p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
 
      <h1 class="title">Star Briques</h1>
@@ -1141,3 +715,5 @@ document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 </script>
 </body>
 </html>
+
+
