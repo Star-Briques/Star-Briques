@@ -416,53 +416,7 @@ body { font-family: 'Papyrus', sans-serif; text-align: center; background-color:
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Star Briques</title>
 <link rel="icon" href="ico.png" type="image/webp">
-<style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
-/* ✅ Style général */ 
-body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
-
-/* ✅ Correction du positionnement des drapeaux sur PC */ 
-.flag-left, .flag-right { height: 60px; width: auto; border-radius: 8px; position: absolute; } 
-
-.flag-left { left: 0.7%; } 
-.flag-right { right: 2%; } 
-
-/* ✅ Ajustement du logo */ 
-.logo-center {
-    width: 50px; /* Largeur spécifique */
-    height: 50px; /* Hauteur spécifique */
-}
-
-
-
-/* ✅ Correction du curseur */ 
-body, div, span, p { cursor: default; } 
-a, button { cursor: pointer; } 
-
-
-        .top-bar {
- position: fixed;
- top: 0; left: 0;
- width: 100%; height: auto;
- background: rgba(0, 0, 0, 0.2);
- display: flex;
- align-items: center;
- justify-content: space-around;
- padding: 10px;
- flex-wrap: wrap;
- z-index: 1000;
-}
-
-    
-    #infos-container {
-    position: fixed;
-    top: 10%;
-    right: 3px;
-    width: 27%;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    border-radius: 8px;
-    color: white;
-}
+<style>
 
 /* Style du bouton de localisation */
     .location-btn {
@@ -477,7 +431,7 @@ a, button { cursor: pointer; }
         cursor: pointer;
         transition: all 0.3s ease;
     }
-
+ 
     .location-btn:hover {
         background: #45a049;
         transform: translateY(-2px);
