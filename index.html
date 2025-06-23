@@ -470,19 +470,29 @@ a, button { cursor: pointer; }
 
 
 const musiqueFond = document.getElementById('musique-fond');
-      musiqueFond.volume = 0.3; // ajuste le volume si besoin
 const stopBtn = document.getElementById('stop-musique');
 
 let musiqueInitiee = false;
 
-stopBtn.addEventListener('click', () => {
+// ✅ Démarre la musique dès la première interaction utilisateur
+const initMusiqueAuto = () => {
   if (!musiqueInitiee) {
+    musiqueFond.volume = 0.3;
     musiqueFond.play().then(() => {
       musiqueInitiee = true;
       stopBtn.textContent = '⏸ Pause musique';
     }).catch(err => {
-      console.warn("Impossible de lancer la musique :", err);
+      console.warn("Lecture automatique bloquée :", err);
     });
+  }
+};
+
+// ⚠️ On écoute le premier clic sur la page pour déclencher la musique si nécessaire
+window.addEventListener('click', initMusiqueAuto, { once: true });
+
+stopBtn.addEventListener('click', () => {
+  if (!musiqueInitiee) {
+    initMusiqueAuto(); // démarre si ce n’est pas encore lancé
   } else {
     if (musiqueFond.paused) {
       musiqueFond.play();
@@ -493,6 +503,7 @@ stopBtn.addEventListener('click', () => {
     }
   }
 });
+
 
      const slideGroups = document.querySelectorAll('.caption-slider');
 
