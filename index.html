@@ -467,6 +467,49 @@ a, button { cursor: pointer; }
         slide.style.maxWidth = '100%';
       });
 
+
+
+const musiqueFond = document.getElementById('musique-fond');
+      musiqueFond.volume = 0.3; // ajuste le volume si besoin
+const stopBtn = document.getElementById('stop-musique');
+
+let musiqueInitiee = false;
+
+stopBtn.addEventListener('click', () => {
+  if (!musiqueInitiee) {
+    musiqueFond.play().then(() => {
+      musiqueInitiee = true;
+      stopBtn.textContent = '⏸ Pause musique';
+    }).catch(err => {
+      console.warn("Impossible de lancer la musique :", err);
+    });
+  } else {
+    if (musiqueFond.paused) {
+      musiqueFond.play();
+      stopBtn.textContent = '⏸';
+    } else {
+      musiqueFond.pause();
+      stopBtn.textContent = '▶️';
+    }
+  }
+});
+
+     const slideGroups = document.querySelectorAll('.caption-slider');
+
+slideGroups.forEach(slider => {
+  const captions = slider.querySelectorAll('.caption-slide');
+  let index = 0;
+
+  setInterval(() => {
+    captions[index].classList.remove('active');
+    index = (index + 1) % captions.length;
+    captions[index].classList.add('active');
+  }, 4000); // change toutes les 4 secondes
+});
+
+
+
+
     
       function chargerVoixMasculine() {
         const voix = speechSynthesis.getVoices();
@@ -521,46 +564,7 @@ a, button { cursor: pointer; }
       lireCaption(index);
     });
 
-
-const musiqueFond = document.getElementById('musique-fond');
-      musiqueFond.volume = 0.3; // ajuste le volume si besoin
-const stopBtn = document.getElementById('stop-musique');
-
-let musiqueInitiee = false;
-
-stopBtn.addEventListener('click', () => {
-  if (!musiqueInitiee) {
-    musiqueFond.play().then(() => {
-      musiqueInitiee = true;
-      stopBtn.textContent = '⏸ Pause musique';
-    }).catch(err => {
-      console.warn("Impossible de lancer la musique :", err);
-    });
-  } else {
-    if (musiqueFond.paused) {
-      musiqueFond.play();
-      stopBtn.textContent = '⏸';
-    } else {
-      musiqueFond.pause();
-      stopBtn.textContent = '▶️';
-    }
-  }
-});
-
-     const slideGroups = document.querySelectorAll('.caption-slider');
-
-slideGroups.forEach(slider => {
-  const captions = slider.querySelectorAll('.caption-slide');
-  let index = 0;
-
-  setInterval(() => {
-    captions[index].classList.remove('active');
-    index = (index + 1) % captions.length;
-    captions[index].classList.add('active');
-  }, 4000); // change toutes les 4 secondes
-});
-
-
+          
       
   </script>
 
