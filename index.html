@@ -480,7 +480,7 @@ const initMusiqueAuto = () => {
     musiqueFond.volume = 0.3;
     musiqueFond.play().then(() => {
       musiqueInitiee = true;
-      stopBtn.textContent = '⏸ Pause musique';
+      stopBtn.textContent = '⏸';
     }).catch(err => {
       console.warn("Lecture automatique bloquée :", err);
     });
@@ -544,7 +544,7 @@ slideGroups.forEach(slider => {
         if (caption) {
           const utterance = new SpeechSynthesisUtterance(caption);
           utterance.lang = 'fr-FR';
-          utterance.rate = 0.9;
+          utterance.rate = 0.8;
           utterance.pitch = 1;
           utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
