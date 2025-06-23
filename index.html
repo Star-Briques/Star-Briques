@@ -347,7 +347,26 @@ a, button { cursor: pointer; }
     #prev-btn { left: 0%; }
     #next-btn { right: 0%; }
 
+    .caption-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+}
 
+.caption-slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.caption-slide.active {
+  opacity: 1;
+}
+
+
+      
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
         
@@ -389,7 +408,14 @@ a, button { cursor: pointer; }
 
                 <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
-          <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
+          <div class="video-caption">
+  <div class="caption-slider">
+    <div class="caption-slide active">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
+    <div class="caption-slide">Un choix solide pour vos constructions modernes.</div>
+    <div class="caption-slide">Qualité, durabilité et innovation – c’est notre promesse.</div>
+  </div>
+</div>
+
                    
 
         </div>
@@ -522,7 +548,19 @@ stopBtn.addEventListener('click', () => {
   }
 });
 
-     
+     const slideGroups = document.querySelectorAll('.caption-slider');
+
+slideGroups.forEach(slider => {
+  const captions = slider.querySelectorAll('.caption-slide');
+  let index = 0;
+
+  setInterval(() => {
+    captions[index].classList.remove('active');
+    index = (index + 1) % captions.length;
+    captions[index].classList.add('active');
+  }, 4000); // change toutes les 4 secondes
+});
+
 
       
   </script>
