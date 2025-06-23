@@ -448,6 +448,227 @@ a, button { cursor: pointer; }
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Briques</title>
+<link rel="icon" href="ico.png" type="image/webp">
+<style> @import url('https://fonts.googleapis.com/css2?family=Papyrus&display=swap'); 
+/* ✅ Style général */ 
+body { font-family: 'Papyrus', sans-serif; text-align: center; background-color: rgba(0, 0, 0, 0.2); color: #642EFE; font-weight: bold; } 
+
+/* ✅ Correction du positionnement des drapeaux sur PC */ 
+.flag-left, .flag-right { height: 60px; width: auto; border-radius: 8px; position: absolute; } 
+
+.flag-left { left: 0.7%; } 
+.flag-right { right: 2%; } 
+
+/* ✅ Ajustement du logo */ 
+.logo-center {
+    width: 50px; /* Largeur spécifique */
+    height: 50px; /* Hauteur spécifique */
+}
+
+ 
+    
+/* ✅ Image de profil */ 
+.profile-img { width: 120px; border-radius: 10px; position: absolute; top: 10px; right: 10px; } 
+
+/* ✅ Table d'informations */ 
+.table-info { width: 49%; border-collapse: collapse; margin-top: 10%; margin-left: 51%; } 
+
+.table-info td { padding: 4px; text-align: center; border: none; color: black; }  
+
+/* ✅ Icônes sociales */ 
+.social-container { position: fixed; bottom: 10px; right: 10px; display: flex; flex-direction: column; gap: 10px; } 
+
+.social-icon { width: 30px; transition: transform 0.3s ease; } 
+.social-icon:hover { transform: scale(1.1); } 
+
+/* ✅ Bouton retour */ 
+.back-button { width: 50px; transition: transform 0.3s ease; } 
+.back-button:hover { transform: scale(1.1); } 
+
+/* ✅ Correction du curseur */ 
+body, div, span, p { cursor: default; } 
+a, button { cursor: pointer; } 
+
+
+        .top-bar {
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%; height: auto;
+ background: rgba(0, 0, 0, 0.2);
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ padding: 10px;
+ flex-wrap: wrap;
+ z-index: 1000;
+}
+
+    
+    #infos-container {
+    position: fixed;
+    top: 10%;
+    right: 3px;
+    width: 27%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 8px;
+    color: white;
+}
+
+/* Style du bouton de localisation */
+    .location-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 4px 4px;
+        background: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .location-btn:hover {
+        background: #45a049;
+        transform: translateY(-2px);
+    }
+
+    .location-icon {
+        display: flex;
+        align-items: center;
+    }
+
+    .musique-btn {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+.musique-btn:hover {
+  background-color: #0056b3;
+}
+
+
+    
+/*------------------------------------------------------------ ✅ Adaptation pour mobile--------------------------------------------- */ 
+@media screen and (max-width: 768px) { 
+        
+ .flag-left, .flag-right {
+    height: 40px;
+    width: auto;
+    border-radius: 8px;
+    position: absolute; /* ✅ Remet en position absolue */
+    top: 8px;
+  }
+
+  .flag-left {
+    left: 1.5%; /* ✅ Plus près du bord gauche */
+  }
+
+  .flag-right {
+    right: 1.5%; /* ✅ Plus près du bord droit */
+  }
+    
+        
+               .top-bar {
+ position: fixed;
+ top: 0; left: 0;
+ width: 99%; height: auto;
+ background: rgba(0, 0, 0, 0.2);
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ padding: 5px; padding-left: 0px;
+ flex-wrap: wrap;
+ z-index: 1000;
+}
+        
+         
+
+    
+
+    #infos-container {
+        position: relative;
+        margin-top: 16%;
+        right: 3px;
+        left: 3px;
+        width: 95%; 
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 8px;
+        color: white;
+    }
+    
+}
+
+</style>
+        
+         
+        
+        
+<style>
+.logo-center {
+ height: 60%;
+ max-height: 70px;
+}
+.load-btn {
+ background-color: transparent;
+ color: white;
+ border: 2px solid white;
+ border-radius: 8px;
+ padding: 6px 12px;
+ cursor: pointer;
+ font-weight: bold;
+ width: 10%;
+ min-width: 80px;
+ max-width: 100%;
+ font-size: 14px;
+ transition: 0.3s;
+ z-index: 8001;
+}
+.load-btn:hover {
+ background-color: rgba(255, 255, 255, 0.2);
+}
+</style>
+
+</head>
+<body>  
+   <audio id="musique-fond" src="musique-intro.mp3" preload="auto" loop></audio>
+<button id="stop-musique" class="musique-btn">▶️</button>
+
+
+
+<div class="top-bar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
+    
+    <img src="ico.png" alt="Logo" class="logo-center">
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
+</div>
+        
+        
+             <h1 class="title">Star Briques</h1>
+            
+            <button class="ltd-button">LTD</button>
+        
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slider Star-Briques</title>
@@ -525,20 +746,6 @@ a, button { cursor: pointer; }
       width: 70%;
       z-index: 2;
     }
-      .caption-slide {
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.caption-slide.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 
     #prev-btn,
     #next-btn {
@@ -576,23 +783,6 @@ a, button { cursor: pointer; }
       transition: transform 0.3s ease-in-out;
       z-index: -1;
     }
-
-     .caption-slide {
-  display: none;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.caption-slide.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-      
-      
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
 
@@ -643,35 +833,19 @@ a, button { cursor: pointer; }
 
                 <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
-<div class="video-caption">
-  <span class="caption-slide">Message 1 pour cette vidéo</span>
-  <span class="caption-slide">Message 2 défilant ensuite</span>
-  <span class="caption-slide">Et ainsi de suite…</span>
-</div>
-
-</div>
+          <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
                    
 
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid003.mp4" controls muted autoplay></video>
-<div class="video-caption">
-  <span class="caption-slide">Message 1 pour cette vidéo</span>
-  <span class="caption-slide">Message 2 défilant ensuite</span>
-  <span class="caption-slide">Et ainsi de suite…</span>
-</div>
-
-</div>
+          <div class="video-caption">Star-Briques un prix qui séduit, une qualité qui rassure.</div>
               
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls muted autoplay></video>
- <div class="video-caption">
-  <span class="caption-slide">Message 1 pour cette vidéo</span>
-  <span class="caption-slide">Message 2 défilant ensuite</span>
-  <span class="caption-slide">Et ainsi de suite…</span>
-</div>
-
+          <div class="video-caption">Pour la qualité et le prix, Star-Briques fait le pari des deux.</div>
+                        <audio src="mp3001.mp3" autoplay preload="auto"></audio>
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls muted autoplay></video>
@@ -737,7 +911,7 @@ a, button { cursor: pointer; }
           utterance.lang = 'fr-FR';
           utterance.rate = 1.05;
           utterance.pitch = 1;
-          utterance.volume = 3;
+          utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
           speechSynthesis.cancel();
           speechSynthesis.speak(utterance);
@@ -768,7 +942,7 @@ a, button { cursor: pointer; }
 
 
 const musiqueFond = document.getElementById('musique-fond');
-      musiqueFond.volume = 0.05; // ajuste le volume si besoin
+      musiqueFond.volume = 0.3; // ajuste le volume si besoin
 const stopBtn = document.getElementById('stop-musique');
 
 let musiqueInitiee = false;
@@ -792,64 +966,15 @@ stopBtn.addEventListener('click', () => {
   }
 });
 
-     function lancerMiniSlider(i) {
-  const captionSpans = slides[i].querySelectorAll('.caption-slide');
-  let current = 0;
-
-  // Reset tous les textes
-  captionSpans.forEach(span => span.classList.remove('active'));
-
-  captionSpans[0]?.classList.add('active');
-
-  const intervalId = setInterval(() => {
-    captionSpans[current]?.classList.remove('active');
-    current = (current + 1) % captionSpans.length;
-    captionSpans[current]?.classList.add('active');
-  }, 3000);
-
-  // Stocke l'intervalle pour pouvoir l'arrêter plus tard si besoin
-  slides[i].dataset.intervalId = intervalId;
-}
-
-function arreterMiniSlider(i) {
-  const intervalId = slides[i].dataset.intervalId;
-  if (intervalId) {
-    clearInterval(intervalId);
-    delete slides[i].dataset.intervalId;
-  }
-}
-
-function lancerMiniSlider(i) {
-  const captionSpans = slides[i].querySelectorAll('.caption-slide');
-  let current = 0;
-
-  // Tout masquer au début
-  captionSpans.forEach(span => span.classList.remove('active'));
-  captionSpans[0]?.classList.add('active');
-
-  const intervalId = setInterval(() => {
-    captionSpans[current]?.classList.remove('active');
-    current = (current + 1) % captionSpans.length;
-    captionSpans[current]?.classList.add('active');
-  }, 5000); // changement toutes les 5 secondes
-
-  // Enregistre l’ID pour pouvoir l’arrêter plus tard
-  slides[i].dataset.intervalId = intervalId;
-}
-
-function arreterMiniSlider(i) {
-  const intervalId = slides[i].dataset.intervalId;
-  if (intervalId) {
-    clearInterval(intervalId);
-    delete slides[i].dataset.intervalId;
-  }
-}
+     
 
       
   </script>
 
 </body>
 </html>
+
+
 
 
 
