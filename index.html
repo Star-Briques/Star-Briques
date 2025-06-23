@@ -59,6 +59,33 @@ a, button { cursor: pointer; }
  z-index: 1000;
 }
 
+  .title {
+      margin-top: 5%;
+      color: #1E90FF;
+      font-size: 2em;
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: glow 2s ease-in-out infinite alternate;
+      margin-bottom: 40px;
+    }
+    
+    .ltd-button {
+      position: absolute;
+      top: 14%;
+      margin-left: 6%;
+      background-color: #FFD700;
+      color: #007bff;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: bold;
+      padding: 2px 2px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      z-index: -1;
+    }
+    
     
     #infos-container {
     position: fixed;
@@ -164,7 +191,16 @@ a, button { cursor: pointer; }
         border-radius: 8px;
         color: white;
     }
-    
+
+                .title {
+        font-size: 1.7em;
+        margin-top: 20%;
+        margin-left: 5%;
+      }
+          .ltd-button {
+        left: 65%; z-index:-1;
+        top: 15%;
+      }
 }
 
 </style>
@@ -226,15 +262,6 @@ a, button { cursor: pointer; }
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Slider Star-Briques</title>
   <style>
-  .title {
-      margin-top: 5%;
-      color: #1E90FF;
-      font-size: 2em;
-      text-align: center;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      animation: glow 2s ease-in-out infinite alternate;
-      margin-bottom: 40px;
-    }
 
     .container {
       width: 40%;
@@ -320,30 +347,9 @@ a, button { cursor: pointer; }
     #prev-btn { left: 0%; }
     #next-btn { right: 0%; }
 
-    .ltd-button {
-      position: absolute;
-      top: 14%;
-      margin-left: 6%;
-      background-color: #FFD700;
-      color: #007bff;
-      font-size: 1em;
-      font-style: italic;
-      font-weight: bold;
-      padding: 2px 2px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-      z-index: -1;
-    }
+
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
-
-             .title {
-        font-size: 1.7em;
-        margin-top: 20%;
-        margin-left: 5%;
-      }
         
       .container {
         width: 95%;
@@ -370,10 +376,7 @@ a, button { cursor: pointer; }
         padding: 8px;
       }
 
-      .ltd-button {
-        left: 65%; z-index:-1;
-        top: 15%;
-      }
+
     }
   </style>
 </head>
