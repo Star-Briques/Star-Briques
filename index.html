@@ -299,6 +299,20 @@ a, button { cursor: pointer; }
       width: 70%;
       z-index: 2;
     }
+      .caption-slide {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.caption-slide.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
     #prev-btn,
     #next-btn {
@@ -386,13 +400,23 @@ a, button { cursor: pointer; }
 
                 <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
-          <div class="video-caption">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
+          <div class="video-caption">
+              <div class="video-caption">
+  <span class="caption-slide">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</span>
+  <span class="caption-slide">La qualité est notre priorité</span>
+  <span class="caption-slide">Des prix imbattables à l’épreuve du temps</span>
+</div>
+</div>
                    
 
         </div>
         <div class="video-container">
           <video src="https://star-briques.github.io/Star-Briques/vid003.mp4" controls muted autoplay></video>
-          <div class="video-caption">Star-Briques un prix qui séduit, une qualité qui rassure.</div>
+          <div class="video-caption">
+                <span class="caption-slide">Star-Briques un prix qui séduit, une qualité qui rassure.</span>
+  <span class="caption-slide">La qualité est notre priorité</span>
+  <span class="caption-slide">Des prix imbattables à l’épreuve du temps</span>
+</div></div>
               
         </div>
         <div class="video-container">
@@ -519,7 +543,33 @@ stopBtn.addEventListener('click', () => {
   }
 });
 
-     
+     function lancerMiniSlider(i) {
+  const captionSpans = slides[i].querySelectorAll('.caption-slide');
+  let current = 0;
+
+  // Reset tous les textes
+  captionSpans.forEach(span => span.classList.remove('active'));
+
+  captionSpans[0]?.classList.add('active');
+
+  const intervalId = setInterval(() => {
+    captionSpans[current]?.classList.remove('active');
+    current = (current + 1) % captionSpans.length;
+    captionSpans[current]?.classList.add('active');
+  }, 3000);
+
+  // Stocke l'intervalle pour pouvoir l'arrêter plus tard si besoin
+  slides[i].dataset.intervalId = intervalId;
+}
+
+function arreterMiniSlider(i) {
+  const intervalId = slides[i].dataset.intervalId;
+  if (intervalId) {
+    clearInterval(intervalId);
+    delete slides[i].dataset.intervalId;
+  }
+}
+
 
       
   </script>
