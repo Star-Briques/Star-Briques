@@ -199,8 +199,9 @@ a, button { cursor: pointer; }
 
 </head>
 <body>  
-    <audio id="musique-fond" src="mp3001.mp3" autoplay preload="auto" loop></audio>
-    <button id="stop-musique" class="musique-btn">⏸ Stop musique</button>
+   <audio id="musique-fond" src="musique-intro.mp3" preload="auto" loop></audio>
+<button id="stop-musique" class="musique-btn">▶️ Démarrer musique</button>
+
 
 
 <div class="top-bar">
@@ -493,18 +494,29 @@ a, button { cursor: pointer; }
     });
 
 
+const musiqueFond = document.getElementById('musique-fond');
 const stopBtn = document.getElementById('stop-musique');
 
+let musiqueInitiee = false;
+
 stopBtn.addEventListener('click', () => {
-  if (musiqueFond.paused) {
-    musiqueFond.play();
-    stopBtn.textContent = '⏸ Pause musique';
+  if (!musiqueInitiee) {
+    musiqueFond.play().then(() => {
+      musiqueInitiee = true;
+      stopBtn.textContent = '⏸ Pause musique';
+    }).catch(err => {
+      console.warn("Impossible de lancer la musique :", err);
+    });
   } else {
-    musiqueFond.pause();
-    stopBtn.textContent = '▶️ Reprendre musique';
+    if (musiqueFond.paused) {
+      musiqueFond.play();
+      stopBtn.textContent = '⏸ Pause musique';
+    } else {
+      musiqueFond.pause();
+      stopBtn.textContent = '▶️ Reprendre musique';
+    }
   }
 });
-
 
      
 
