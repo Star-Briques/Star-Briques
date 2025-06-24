@@ -365,8 +365,7 @@ a, button { cursor: pointer; }
 }
 
 
-
-      .share-wrapper {
+.share-wrapper {
   position: relative;
 }
 
@@ -375,25 +374,24 @@ a, button { cursor: pointer; }
   position: absolute;
   bottom: 40px;
   right: 0;
-  background: rgba(0, 0, 0, 0.9);
-  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 6px;
   border-radius: 6px;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   z-index: 999;
 }
 
-.share-menu a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 4px 0;
-  font-size: 14px;
+.share-menu a img {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
 }
 
-.share-menu a:hover {
-  text-decoration: underline;
+.share-menu a:hover img {
+  transform: scale(1.2);
 }
-
 
       
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -605,15 +603,16 @@ slideGroups.forEach(slider => {
       lireCaption(index);
     });
 
-        function toggleShareMenu() {
+function toggleShareMenu() {
   const menu = document.getElementById('share-menu');
   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
-  const currentURL = encodeURIComponent(window.location.href);
-  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${currentURL}`;
-  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${currentURL}`;
-  document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${currentURL}`;
+  const url = encodeURIComponent(window.location.href);
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
+  document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
 }
+
   
       
   </script>
@@ -695,13 +694,21 @@ slideGroups.forEach(slider => {
          alt="Partager"
          class="social-icon"
          onclick="toggleShareMenu()" />
+
     <div id="share-menu" class="share-menu">
-      <a href="#" id="share-facebook" target="_blank">Facebook</a>
-      <a href="#" id="share-tiktok" target="_blank">TikTok</a>
-      <a href="#" id="share-whatsapp" target="_blank">WhatsApp</a>
+      <a href="#" id="share-facebook" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
+      </a>
+      <a href="#" id="share-tiktok" target="_blank">
+        <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
+      </a>
+      <a href="#" id="share-whatsapp" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
+      </a>
     </div>
   </div>
 </div>
+
 
 
 
