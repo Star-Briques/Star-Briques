@@ -611,14 +611,14 @@ slideGroups.forEach(slider => {
 
 function toggleShareMenu() {
   const menu = document.getElementById('share-menu');
-  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  menu.classList.toggle('visible');
 
   const url = encodeURIComponent(window.location.href);
   document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
   document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
 }
- 
+
       
   </script>
 
