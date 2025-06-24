@@ -932,24 +932,31 @@ document.getElementById('men5').innerText = '';
 document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 
+let currentSlide = 0;
+const sbvSlides = document.querySelector('.sbv-slides');
+const totalSlides = document.querySelectorAll('.sbv-slide').length;
 
-let sbvSlides = document.querySelectorAll('.sbv-slide');
-let sbvCurrent = 0;
-
-function sbvShowSlide(index) {
-  sbvSlides.forEach((slide, i) => {
-    slide.classList.remove('active');
-    if (i === index) slide.classList.add('active');
-  });
+function showSlide(index) {
+  sbvSlides.style.transform = `translateY(-${index * 200}px)`;
 }
 
-function sbvNext() {
-  sbvCurrent = (sbvCurrent + 1) % sbvSlides.length;
-  sbvShowSlide(sbvCurrent);
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  showSlide(currentSlide);
 }
 
-sbvShowSlide(sbvCurrent);
-setInterval(sbvNext, 15000);
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+  showSlide(currentSlide);
+}
+
+document.querySelector('.sbv-next').addEventListener('click', nextSlide);
+document.querySelector('.sbv-prev').addEventListener('click', prevSlide);
+
+setInterval(nextSlide, 15000); // Slide automatique toutes les 15 secondes
+
+showSlide(currentSlide);
+
 
     
 </script>
