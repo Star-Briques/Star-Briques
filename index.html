@@ -364,7 +364,6 @@ a, button { cursor: pointer; }
   display: block;
 }
 
-
 .share-wrapper {
   position: relative;
 }
@@ -383,10 +382,10 @@ a, button { cursor: pointer; }
   z-index: 999;
 }
 
-.share-menu.visible {
+      .share-menu.visible {
   display: flex;
 }
-      
+
 .share-menu a img {
   width: 24px;
   height: 24px;
@@ -397,6 +396,9 @@ a, button { cursor: pointer; }
   transform: scale(1.2);
 }
 
+
+
+      
       
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
@@ -609,15 +611,14 @@ slideGroups.forEach(slider => {
 
 function toggleShareMenu() {
   const menu = document.getElementById('share-menu');
-  menu.classList.toggle('visible');
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 
   const url = encodeURIComponent(window.location.href);
   document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
   document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
   document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
 }
-
-  
+ 
       
   </script>
 
@@ -680,7 +681,6 @@ function toggleShareMenu() {
 
     
 
-
 <div class="social-container">
   <a href="https://www.facebook.com/profile.php?id=61556932132124" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
@@ -694,12 +694,15 @@ function toggleShareMenu() {
 
   <!-- 🔄 Bouton Partager -->
   <div class="share-wrapper">
-  <img src="https://www.svgrepo.com/show/486829/share.svg" alt="Partager" class="social-icon" onclick="toggleShareMenu()" />
-
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Share_icon_circle.svg"
+         alt="Partager"
+         class="social-icon"
+         onclick="toggleShareMenu()" />
 
     <div id="share-menu" class="share-menu">
       <a href="#" id="share-facebook" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
+        <img src="https://www.svgrepo.com/show/486829/share.svg" alt="Partager" class="social-icon" onclick="toggleShareMenu()" />
+
       </a>
       <a href="#" id="share-tiktok" target="_blank">
         <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
@@ -710,6 +713,7 @@ function toggleShareMenu() {
     </div>
   </div>
 </div>
+
  
 
 
