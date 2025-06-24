@@ -747,62 +747,37 @@ slideGroups.forEach(slider => {
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
 <style>
 
-.sbv-slider {
+.slider {
   position: relative;
-  width: 100%;
-  height: 200px;
+  width: 600px;
+  height: 350px;
   overflow: hidden;
+  margin: auto;
 }
-
-.sbv-slides {
+.slides {
   display: flex;
-  flex-direction: column;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  width: calc(600px * 8);
 }
-
-.sbv-slide {
-  height: 200px;
-  flex-shrink: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.sbv-slide img {
-  width: 100%;
-  height: 150px;
+.slide {
+  width: 600px;
+  height: 350px;
   object-fit: cover;
 }
-
-.sbv-caption {
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
   color: white;
-  font-weight: bold;
-  font-family: 'Comic Sans MS', cursive;
-  margin-top: 5px;
-}
-
-.sbv-nav {
-  margin-top: 5px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.sbv-btn {
-  background-color: #642EFE;
-  color: white;
+  font-size: 24px;
   border: none;
-  padding: 5px 12px;
-  font-size: 16px;
-  border-radius: 4px;
+  padding: 10px;
   cursor: pointer;
+  z-index: 10;
 }
-
-.sbv-btn:hover {
-  background-color: #4B20B8;
-}
-
+.prev { left: 10px; }
+.next { right: 10px; }
 
     
 </style>
@@ -812,30 +787,21 @@ slideGroups.forEach(slider => {
     
 <div id='menuPanel' class='menu-panel'>
 <h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center"></h2>
-<div class="sbv-slider">
-  <div class="sbv-slides">
-    <div class="sbv-slide"><img src="img1.jpg"><div class="sbv-caption">Brique résistante</div></div>
-    <div class="sbv-slide"><img src="img2.jpg"><div class="sbv-caption">Isolation phonique</div></div>
-    <div class="sbv-slide"><img src="img3.jpg"><div class="sbv-caption">Prix imbattables</div></div>
-    <div class="sbv-slide"><img src="img4.jpg"><div class="sbv-caption">Finition durable</div></div>
-    <div class="sbv-slide"><img src="img5.jpg"><div class="sbv-caption">Fabrication locale</div></div>
-    <div class="sbv-slide"><img src="img6.jpg"><div class="sbv-caption">Écologique</div></div>
-    <div class="sbv-slide"><img src="img7.jpg"><div class="sbv-caption">Livraison rapide</div></div>
-    <div class="sbv-slide"><img src="img8.jpg"><div class="sbv-caption">Support client</div></div>
+<div class="slider">
+  <button class="prev">&#10094;</button>
+  <div class="slides">
+    <img src="img1.jpg" class="slide" />
+    <img src="img2.jpg" class="slide" />
+    <img src="img3.jpg" class="slide" />
+    <img src="img4.jpg" class="slide" />
+    <img src="img5.jpg" class="slide" />
+    <img src="img6.jpg" class="slide" />
+    <img src="img7.jpg" class="slide" />
+    <img src="img8.jpg" class="slide" />
   </div>
-
-  <div class="sbv-nav">
-    <button class="sbv-btn sbv-prev">&#8679;</button>
-    <button class="sbv-btn sbv-next">&#8681;</button>
-  </div>
+  <button class="next">&#10095;</button>
 </div>
 
-
-
-  <!-- Boutons PC uniquement -->
-  <button class="sb-nav sb-prev">&#8679;</button>
-  <button class="sb-nav sb-next">&#8681;</button>
-</div>
 
 <p>Page générée par D-ω≡/&gt; - générator </p>
 </div>
@@ -932,31 +898,24 @@ document.getElementById('men5').innerText = '';
 document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 
-let currentSlide = 0;
-const sbvSlides = document.querySelector('.sbv-slides');
-const totalSlides = document.querySelectorAll('.sbv-slide').length;
 
-function showSlide(index) {
-  sbvSlides.style.transform = `translateY(-${index * 200}px)`;
+
+
+
+
+    const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slide');
+let index = 0;
+
+function showSlide(i) {
+  index = (i + images.length) % images.length;
+  slides.style.transform = `translateX(-${600 * index}px)`;
 }
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  showSlide(currentSlide);
-}
+document.querySelector('.prev').onclick = () => showSlide(index - 1);
+document.querySelector('.next').onclick = () => showSlide(index + 1);
 
-function prevSlide() {
-  currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-  showSlide(currentSlide);
-}
-
-document.querySelector('.sbv-next').addEventListener('click', nextSlide);
-document.querySelector('.sbv-prev').addEventListener('click', prevSlide);
-
-setInterval(nextSlide, 15000); // Slide automatique toutes les 15 secondes
-
-showSlide(currentSlide);
-
+setInterval(() => showSlide(index + 1), 3000); // Slide automatique toutes les 3 secondes
 
     
 </script>
