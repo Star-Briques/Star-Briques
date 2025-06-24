@@ -747,37 +747,70 @@ slideGroups.forEach(slider => {
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
 <style>
 
-.slider {
+.rb-hslider {
   position: relative;
-  width: 600px;
-  height: 350px;
+  width: 100%;
   overflow: hidden;
-  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-.slides {
+
+.rb-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: calc(600px * 8);
+  transition: transform 0.6s ease-in-out;
 }
-.slide {
-  width: 600px;
-  height: 350px;
+
+.rb-hslide {
+  min-width: 100%;
+  height: 200px;
+  position: relative;
+}
+
+.rb-hslide img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  filter: brightness(0.9);
 }
-.prev, .next {
+
+.rb-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: 'Georgia', serif;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 5px 0;
+}
+
+.rb-nav {
   position: absolute;
   top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  font-size: 24px;
+  pointer-events: none;
+}
+
+.rb-btn {
+  background: rgba(0, 0, 0, 0.5);
   border: none;
+  color: white;
+  font-size: 22px;
   padding: 10px;
   cursor: pointer;
-  z-index: 10;
+  pointer-events: all;
+  transition: background 0.3s ease;
 }
-.prev { left: 10px; }
-.next { right: 10px; }
+
+.rb-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
 
     
 </style>
@@ -787,20 +820,24 @@ slideGroups.forEach(slider => {
     
 <div id='menuPanel' class='menu-panel'>
 <h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center"></h2>
-<div class="slider">
-  <button class="prev">&#10094;</button>
-  <div class="slides">
-    <img src="img1.jpg" class="slide" />
-    <img src="img2.jpg" class="slide" />
-    <img src="img3.jpg" class="slide" />
-    <img src="img4.jpg" class="slide" />
-    <img src="img5.jpg" class="slide" />
-    <img src="img6.jpg" class="slide" />
-    <img src="img7.jpg" class="slide" />
-    <img src="img8.jpg" class="slide" />
+<div class="rb-hslider">
+  <div class="rb-track">
+    <div class="rb-hslide"><img src="img1.jpg"><div class="rb-caption">Brique résistante</div></div>
+    <div class="rb-hslide"><img src="img2.jpg"><div class="rb-caption">Isolation phonique</div></div>
+    <div class="rb-hslide"><img src="img3.jpg"><div class="rb-caption">Prix imbattables</div></div>
+    <div class="rb-hslide"><img src="img4.jpg"><div class="rb-caption">Finition durable</div></div>
+    <div class="rb-hslide"><img src="img5.jpg"><div class="rb-caption">Fabrication locale</div></div>
+    <div class="rb-hslide"><img src="img6.jpg"><div class="rb-caption">Écologique</div></div>
+    <div class="rb-hslide"><img src="img7.jpg"><div class="rb-caption">Livraison rapide</div></div>
+    <div class="rb-hslide"><img src="img8.jpg"><div class="rb-caption">Support client</div></div>
   </div>
-  <button class="next">&#10095;</button>
+
+  <div class="rb-nav">
+    <button class="rb-btn rb-prev">&#8592;</button>
+    <button class="rb-btn rb-next">&#8594;</button>
+  </div>
 </div>
+
 
 
 <p>Page générée par D-ω≡/&gt; - générator </p>
@@ -903,19 +940,30 @@ document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 
 
 
-    const slides = document.querySelector('.slides');
-const images = document.querySelectorAll('.slide');
-let index = 0;
+let rbIndex = 0;
+const rbTrack = document.querySelector('.rb-track');
+const rbSlides = document.querySelectorAll('.rb-hslide');
 
-function showSlide(i) {
-  index = (i + images.length) % images.length;
-  slides.style.transform = `translateX(-${600 * index}px)`;
+function updateSlider() {
+  rbTrack.style.transform = `translateX(-${rbIndex * 100}%)`;
 }
 
-document.querySelector('.prev').onclick = () => showSlide(index - 1);
-document.querySelector('.next').onclick = () => showSlide(index + 1);
+function nextRbSlide() {
+  rbIndex = (rbIndex + 1) % rbSlides.length;
+  updateSlider();
+}
 
-setInterval(() => showSlide(index + 1), 3000); // Slide automatique toutes les 3 secondes
+function prevRbSlide() {
+  rbIndex = (rbIndex - 1 + rbSlides.length) % rbSlides.length;
+  updateSlider();
+}
+
+document.querySelector('.rb-next').addEventListener('click', nextRbSlide);
+document.querySelector('.rb-prev').addEventListener('click', prevRbSlide);
+
+setInterval(nextRbSlide, 15000);
+updateSlider();
+
 
     
 </script>
