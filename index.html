@@ -339,7 +339,7 @@ a, button { cursor: pointer; }
   cursor: pointer;
   font-size: 18px;
   border-radius: 5px;
-  z-index: 9999; /* assure que le bouton est au premier plan */
+  z-index: 2; /* assure que le bouton est au premier plan */
   pointer-events: auto !important; /* s'assure que le clic est capté */
   touch-action: manipulation; /* améliore la réponse tactile */
 }
@@ -687,7 +687,7 @@ slideGroups.forEach(slider => {
 }
 
 .menu-panel {
-    position: fixed;
+    position: fixed; z-index: 1001;
     border-radius: 8px;
     top: 10%;
     left: 0%; /* ✅ Assure qu'il soit complètement caché */
