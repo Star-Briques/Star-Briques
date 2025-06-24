@@ -364,41 +364,8 @@ a, button { cursor: pointer; }
   display: block;
 }
 
-.share-wrapper {
-  position: relative;
-}
-
-.share-menu {
-  display: none;
-  position: absolute;
-  bottom: 40px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.85);
-  padding: 6px;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 999;
-}
-
-      .share-menu.visible {
-  display: flex;
-}
-
-.share-menu a img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.3s ease;
-}
-
-.share-menu a:hover img {
-  transform: scale(1.2);
-}
 
 
-
-      
       
 /*------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     @media screen and (max-width: 768px) {
@@ -609,16 +576,7 @@ slideGroups.forEach(slider => {
       lireCaption(index);
     });
 
-function toggleShareMenu() {
-  const menu = document.getElementById('share-menu');
-  menu.classList.toggle('visible');
-
-  const url = encodeURIComponent(window.location.href);
-  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-  document.getElementById('share-whatsapp').href = `https://wa.me/?text=${url}`;
-  document.getElementById('share-tiktok').href = `https://www.tiktok.com/upload?url=${url}`;
-}
-
+          
       
   </script>
 
@@ -681,45 +639,19 @@ function toggleShareMenu() {
 
     
 
+
 <div class="social-container">
-  <a href="https://www.facebook.com/profile.php?id=61556932132124" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
-  </a>
-  <a href="https://www.tiktok.com/@star_briques" target="_blank">
-    <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
-  </a>
-  <a href="https://wa.me/+24166103432" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
-  </a>
-
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Share_icon_circle.svg"
-         alt="Partager"
-         class="social-icon"
-         onclick="toggleShareMenu()" />
-
-
-    
-  <!-- 🔄 Bouton Partager -->
-  <div class="share-wrapper">
-
-    <div id="share-menu" class="share-menu">
-      <a href="#" id="share-facebook" target="_blank">
-        <img src="https://www.svgrepo.com/show/486829/share.svg" alt="Partager" class="social-icon" onclick="toggleShareMenu()" />
-
-      </a>
-      <a href="#" id="share-tiktok" target="_blank">
+    <a href="https://www.facebook.com/profile.php?id=61556932132124" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
+    </a>
+    <a href="https://www.tiktok.com/@star_briques" target="_blank">
         <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
-      </a>
-      <a href="#" id="share-whatsapp" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
-      </a>
-    </div>
-
-  </div>
+    </a>
+              <a href="https://wa.me/+24166103432" target="_blank">  
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">  
+        </a>
+    
 </div>
-
- 
-
 
 
     
