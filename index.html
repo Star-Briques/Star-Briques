@@ -750,9 +750,11 @@ slideGroups.forEach(slider => {
 .rb-hslider {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-top: 10px;
 }
 
 .rb-track {
@@ -760,30 +762,29 @@ slideGroups.forEach(slider => {
   transition: transform 0.6s ease-in-out;
 }
 
-.rb-hslide {
+.rb-slide {
   min-width: 100%;
-  height: 200px;
   position: relative;
+  height: 190px;
 }
 
-.rb-hslide img {
+.rb-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.9);
+  filter: brightness(0.85);
 }
 
 .rb-caption {
   position: absolute;
-  bottom: 10px;
-  left: 0;
+  bottom: 8px;
   width: 100%;
   text-align: center;
   color: white;
-  font-size: 16px;
-  font-family: 'Georgia', serif;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 5px 0;
+  font-size: 15px;
+  font-family: 'Comic Sans MS', cursive;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 0;
 }
 
 .rb-nav {
@@ -801,15 +802,11 @@ slideGroups.forEach(slider => {
   border: none;
   color: white;
   font-size: 22px;
-  padding: 10px;
+  padding: 8px;
   cursor: pointer;
   pointer-events: all;
-  transition: background 0.3s ease;
 }
 
-.rb-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
 
 
     
@@ -822,16 +819,15 @@ slideGroups.forEach(slider => {
 <h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center"></h2>
 <div class="rb-hslider">
   <div class="rb-track">
-    <div class="rb-hslide"><img src="img1.jpg"><div class="rb-caption">Brique résistante</div></div>
-    <div class="rb-hslide"><img src="img2.jpg"><div class="rb-caption">Isolation phonique</div></div>
-    <div class="rb-hslide"><img src="img3.jpg"><div class="rb-caption">Prix imbattables</div></div>
-    <div class="rb-hslide"><img src="img4.jpg"><div class="rb-caption">Finition durable</div></div>
-    <div class="rb-hslide"><img src="img5.jpg"><div class="rb-caption">Fabrication locale</div></div>
-    <div class="rb-hslide"><img src="img6.jpg"><div class="rb-caption">Écologique</div></div>
-    <div class="rb-hslide"><img src="img7.jpg"><div class="rb-caption">Livraison rapide</div></div>
-    <div class="rb-hslide"><img src="img8.jpg"><div class="rb-caption">Support client</div></div>
+    <div class="rb-slide"><img src="img1.jpg"><div class="rb-caption">Briques résistantes</div></div>
+    <div class="rb-slide"><img src="img2.jpg"><div class="rb-caption">Isolation phonique</div></div>
+    <div class="rb-slide"><img src="img3.jpg"><div class="rb-caption">Prix imbattables</div></div>
+    <div class="rb-slide"><img src="img4.jpg"><div class="rb-caption">Finition parfaite</div></div>
+    <div class="rb-slide"><img src="img5.jpg"><div class="rb-caption">Fabrication locale</div></div>
+    <div class="rb-slide"><img src="img6.jpg"><div class="rb-caption">Écologique</div></div>
+    <div class="rb-slide"><img src="img7.jpg"><div class="rb-caption">Livraison rapide</div></div>
+    <div class="rb-slide"><img src="img8.jpg"><div class="rb-caption">Support client pro</div></div>
   </div>
-
   <div class="rb-nav">
     <button class="rb-btn rb-prev">&#8592;</button>
     <button class="rb-btn rb-next">&#8594;</button>
@@ -942,27 +938,28 @@ document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 
 let rbIndex = 0;
 const rbTrack = document.querySelector('.rb-track');
-const rbSlides = document.querySelectorAll('.rb-hslide');
+const rbSlides = document.querySelectorAll('.rb-slide');
 
-function updateSlider() {
+function updateRbSlider() {
   rbTrack.style.transform = `translateX(-${rbIndex * 100}%)`;
 }
 
 function nextRbSlide() {
   rbIndex = (rbIndex + 1) % rbSlides.length;
-  updateSlider();
+  updateRbSlider();
 }
 
 function prevRbSlide() {
   rbIndex = (rbIndex - 1 + rbSlides.length) % rbSlides.length;
-  updateSlider();
+  updateRbSlider();
 }
 
 document.querySelector('.rb-next').addEventListener('click', nextRbSlide);
 document.querySelector('.rb-prev').addEventListener('click', prevRbSlide);
 
 setInterval(nextRbSlide, 15000);
-updateSlider();
+updateRbSlider();
+
 
 
     
