@@ -745,19 +745,90 @@ slideGroups.forEach(slider => {
 
     
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
+<style>
 
+.sb-slider-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.sb-slider {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.sb-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 200px;
+}
+
+.sb-slide img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.sb-caption {
+  color: white;
+  font-weight: bold;
+  margin-top: 5px;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.sb-nav {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #642EFE;
+  border: none;
+  padding: 5px 10px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.sb-prev { top: 5px; }
+.sb-next { bottom: 5px; }
+
+@media screen and (min-width: 769px) {
+  .sb-nav { display: block; }
+}
+
+    
+    
+</style>
      <h1 class="title">Star Briques</h1>
             
             <button class="ltd-button">LTD</button>
     
 <div id='menuPanel' class='menu-panel'>
 <h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center"></h2>
-<p><span id='men1'>111</span>222</p>
-<p><span id='men2'></span></p>
-<p><span id='men3'></span></p>
-<p><span id='men4'></span></p>
-<p><span id='men5'></span></p>
-<p><span id='dwebid'></span></p>
+<div class="sb-slider-container">
+  <div class="sb-slider" id="sbSlider">
+    <div class="sb-slide"><img src="img1.jpg" alt="Brique résistante"><div class="sb-caption">Briques ultrarésistantes</div></div>
+    <div class="sb-slide"><img src="img2.jpg" alt="Isolation phonique"><div class="sb-caption">Isolation phonique garantie</div></div>
+    <div class="sb-slide"><img src="img3.jpg" alt="Prix compétitifs"><div class="sb-caption">Prix imbattables</div></div>
+    <div class="sb-slide"><img src="img4.jpg" alt="Finition nette"><div class="sb-caption">Finition nette et durable</div></div>
+    <div class="sb-slide"><img src="img5.jpg" alt="Production locale"><div class="sb-caption">Fabrication locale certifiée</div></div>
+    <div class="sb-slide"><img src="img6.jpg" alt="Écologique"><div class="sb-caption">Matériaux écologiques</div></div>
+    <div class="sb-slide"><img src="img7.jpg" alt="Livraison rapide"><div class="sb-caption">Livraison rapide sur site</div></div>
+    <div class="sb-slide"><img src="img8.jpg" alt="Service client"><div class="sb-caption">Support client dédié</div></div>
+  </div>
+
+  <!-- Boutons PC uniquement -->
+  <button class="sb-nav sb-prev">&#8679;</button>
+  <button class="sb-nav sb-next">&#8681;</button>
+</div>
+
 <p>Page générée par D-ω≡/&gt; - générator </p>
 </div>
 <style>
@@ -852,6 +923,44 @@ document.getElementById('men4').innerText = 'Chez STAR Briques, nous produisons 
 document.getElementById('men5').innerText = '';
 document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
+
+
+    let sbIndex = 0;
+const sbSlider = document.getElementById('sbSlider');
+const sbSlides = document.querySelectorAll('.sb-slide');
+const sbTotal = sbSlides.length;
+
+function sbShowSlide(index) {
+  sbSlider.style.transform = `translateY(-${index * 200}px)`;
+}
+
+function sbNextSlide() {
+  sbIndex = (sbIndex + 1) % sbTotal;
+  sbShowSlide(sbIndex);
+}
+
+function sbPrevSlide() {
+  sbIndex = (sbIndex - 1 + sbTotal) % sbTotal;
+  sbShowSlide(sbIndex);
+}
+
+document.querySelector('.sb-next').addEventListener('click', sbNextSlide);
+document.querySelector('.sb-prev').addEventListener('click', sbPrevSlide);
+
+// Swipe up/down pour mobile
+let startY = null;
+document.querySelector('.sb-slider-container').addEventListener('touchstart', e => startY = e.touches[0].clientY);
+document.querySelector('.sb-slider-container').addEventListener('touchend', e => {
+  let endY = e.changedTouches[0].clientY;
+  if (startY - endY > 50) sbNextSlide(); // swipe up
+  else if (endY - startY > 50) sbPrevSlide(); // swipe down
+});
+
+// Défilement automatique
+setInterval(sbNextSlide, 15000);
+
+
+    
 </script>
 </body>
 </html>
