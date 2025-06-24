@@ -383,6 +383,10 @@ a, button { cursor: pointer; }
   z-index: 999;
 }
 
+.share-menu.visible {
+  display: flex;
+}
+      
 .share-menu a img {
   width: 24px;
   height: 24px;
@@ -605,7 +609,7 @@ slideGroups.forEach(slider => {
 
 function toggleShareMenu() {
   const menu = document.getElementById('share-menu');
-  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  menu.classList.toggle('visible');
 
   const url = encodeURIComponent(window.location.href);
   document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
@@ -690,10 +694,8 @@ function toggleShareMenu() {
 
   <!-- 🔄 Bouton Partager -->
   <div class="share-wrapper">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Share_icon_circle.svg"
-         alt="Partager"
-         class="social-icon"
-         onclick="toggleShareMenu()" />
+  <img src="https://www.svgrepo.com/show/486829/share.svg" alt="Partager" class="social-icon" onclick="toggleShareMenu()" />
+
 
     <div id="share-menu" class="share-menu">
       <a href="#" id="share-facebook" target="_blank">
