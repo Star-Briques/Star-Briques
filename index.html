@@ -907,62 +907,64 @@ slideGroups.forEach(slider => {
 
 </style>
 <script>
+let sliderInitialise = false;
+
+function initRbSlider() {
+    let rbIndex = 0;
+    const rbTrack = document.querySelector('.rb-track');
+    const rbSlides = document.querySelectorAll('.rb-slide');
+    const nextBtn = document.querySelector('.rb-next');
+    const prevBtn = document.querySelector('.rb-prev');
+
+    if (!rbTrack || rbSlides.length === 0) return; // ✅ Sécurité DOM
+
+    function updateRbSlider() {
+        rbTrack.style.transform = `translateX(-${rbIndex * 100}%)`;
+    }
+
+    function nextRbSlide() {
+        rbIndex = (rbIndex + 1) % rbSlides.length;
+        updateRbSlider();
+    }
+
+    function prevRbSlide() {
+        rbIndex = (rbIndex - 1 + rbSlides.length) % rbSlides.length;
+        updateRbSlider();
+    }
+
+    nextBtn.addEventListener('click', nextRbSlide);
+    prevBtn.addEventListener('click', prevRbSlide);
+
+    setInterval(nextRbSlide, 15000);
+    updateRbSlider();
+    sliderInitialise = true;
+}
+
 function toggleMenu() {
-    let menuPanel = document.getElementById('menuPanel');
-    let audioEnter = new Audio('./Bruit/entre.mp3'); // 🎵 Son d'entrée
-    let audioExit = new Audio('./Bruit/sortie.mp3'); // 🎵 Son de sortie
-    
+    const menuPanel = document.getElementById('menuPanel');
+    const audioEnter = new Audio('./Bruit/entre.mp3');
+    const audioExit = new Audio('./Bruit/sortie.mp3');
+
     if (menuPanel.style.left === '-100%') {
         menuPanel.style.left = '0';
-        audioEnter.play(); // 📢 Joue le son d'entrée
+        audioEnter.play();
+
+        if (!sliderInitialise) initRbSlider(); // ✅ Initialisation unique au premier affichage
     } else {
         menuPanel.style.left = '-100%';
-        audioExit.play(); // 📢 Joue le son de sortie
+        audioExit.play();
     }
 }
- 
- 
-// ✅ Décodage correct des caractères spéciaux avant insertion
+
+// ✅ Mise à jour des textes s'il y a lieu
 document.getElementById('men1').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles.';
-document.getElementById('men2').innerText = '<img src="ico.png" alt="Logo" class="logo-center">';
+document.getElementById('men2').innerHTML = '<img src="ico.png" alt="Logo" class="logo-center">';
 document.getElementById('men3').innerText = 'Des prix imbattables pour vos projets de construction.';
 document.getElementById('men4').innerText = 'Chez STAR Briques, nous produisons des briques 100 % béton, sans fermeture de joint, pour une structure plus résistante et durable.';
 document.getElementById('men5').innerText = '';
 document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
-
-
-
-
-
-
-let rbIndex = 0;
-const rbTrack = document.querySelector('.rb-track');
-const rbSlides = document.querySelectorAll('.rb-slide');
-
-function updateRbSlider() {
-  rbTrack.style.transform = `translateX(-${rbIndex * 100}%)`;
-}
-
-function nextRbSlide() {
-  rbIndex = (rbIndex + 1) % rbSlides.length;
-  updateRbSlider();
-}
-
-function prevRbSlide() {
-  rbIndex = (rbIndex - 1 + rbSlides.length) % rbSlides.length;
-  updateRbSlider();
-}
-
-document.querySelector('.rb-next').addEventListener('click', nextRbSlide);
-document.querySelector('.rb-prev').addEventListener('click', prevRbSlide);
-
-setInterval(nextRbSlide, 15000);
-updateRbSlider();
-
-
-
-    
 </script>
+
 </body>
 </html>
