@@ -327,22 +327,23 @@ a, button { cursor: pointer; }
       z-index: 2;
     }
 
-    #prev-btn,
-    #next-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      padding: 12px;
-      cursor: pointer;
-      font-size: 18px;
-      border-radius: 5px;
-      z-index: 10;
-      touch-action: manipulation;
-      pointer-events: all;
-    }
+   #prev-btn,
+#next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+  z-index: 9999; /* assure que le bouton est au premier plan */
+  pointer-events: auto !important; /* s'assure que le clic est capté */
+  touch-action: manipulation; /* améliore la réponse tactile */
+}
+
 
     #prev-btn { left: 0%; }
     #next-btn { right: 0%; }
