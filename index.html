@@ -434,9 +434,47 @@ a, button { cursor: pointer; }
         font-size: 14px;
         padding: 8px;
       }
-
-
     }
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+      @media screen and (orientation: landscape) and (max-height: 480px) {
+  .container {
+    width: 98%;
+    height: auto;
+    max-height: none;
+    margin-top: 0;
+    padding: 4px;
+    background-position: top center;
+  }
+
+  video {
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .video-caption {
+    font-size: 12px;
+    bottom: 24%;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #prev-btn,
+  #next-btn {
+    font-size: 12px;
+    padding: 6px;
+    top: 45%;
+  }
+
+  .share-slide {
+    bottom: 10px;
+    right: -150px;
+  }
+}
+
+      
   </style>
 </head>
 <body>
