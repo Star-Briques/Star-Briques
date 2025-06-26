@@ -716,7 +716,7 @@ slideGroups.forEach(slider => {
           const utterance = new SpeechSynthesisUtterance(caption);
           utterance.lang = 'fr-FR';
           utterance.rate = 0.94;
-          utterance.pitch = 2;
+          utterance.pitch = 1;
           utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
           speechSynthesis.cancel();
