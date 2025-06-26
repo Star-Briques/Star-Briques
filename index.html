@@ -133,7 +133,7 @@ a, button { cursor: pointer; }
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
-  z-index: 9999;
+  z-index: 100;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   transition: background-color 0.3s;
 }
@@ -197,14 +197,12 @@ a, button { cursor: pointer; }
         margin-top: 20%;
         margin-left: 5%;
       }
-          .ltd-button { 
-        z-index:-1; margin-left: 18%;  top:19%; font-size:0.5em;
-        padding: 0.7%;
+          .ltd-button {
+        left: 65%; z-index:-1;
+        top: 15%;
       }
 }
 
-
-    
 </style>
         
          
@@ -243,17 +241,17 @@ a, button { cursor: pointer; }
 
 
 <div class="top-bar">
-    <img src="Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Flag_of_Gabon.svg" alt="Drapeau Gabon" class="flag-left">
     
     <img src="ico.png" alt="Logo" class="logo-center">
     
-    <img src="Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Drapeau Turquie" class="flag-right">
 </div>
         
         
-             <h1 class="title">Star Briques </h1><button class="ltd-button">LTD</button>
+             <h1 class="title">Star Briques</h1>
             
-            
+            <button class="ltd-button">LTD</button>
         
 
 
@@ -436,106 +434,9 @@ a, button { cursor: pointer; }
         font-size: 14px;
         padding: 8px;
       }
+
+
     }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    <style>
-        
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-   
-   @media screen and (orientation: landscape) and (max-height: 345px) {
-
-       .top-bar { height:35px;}
-
-       .flag-left, .flag-right { height: 30px;  } 
-
-       .logo-center {
- height: 45%; width: 23px;
- max-height: 25px;
-}
-       
-       .menu-btn {
-        font-size: 16px; /* ✅ Ajuste la taille du bouton */
-        padding: 8px;   margin-top:3%;
-    }
-
-.title {
-    font-size: 1.3em;
-    margin-top: 6%;
-    margin-bottom: 20px;
-  }
-
-         .ltd-button { 
-        z-index:-1; margin-left: 10%;  top:19%; font-size:0.4em;
-        padding: 0.5%;
-      }
-          
-          
-  .container {
-    width: 58%;
-    height: auto;
-    max-height: none;
-   top: 5%;
-    padding: 4px;
-    background-position: top center;
-  }
-
-  video {
-    height: 200px;
-    object-fit: contain;
-  }
-
-  .video-caption {
-    font-size: 12px;
-    bottom: 24%;
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  #prev-btn,
-  #next-btn {
-    font-size: 12px;
-    padding: 6px;
-    top: 45%;
-  }
-
-  .share-slide {
-    bottom: 10px;
-    right: -150px;
-  }
-
-  .menu-panel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* ✅ prend toute la largeur visible */
-    height: 100%; /* ✅ prend toute la hauteur visible */
-    padding-top: 5px;
-    margin-left: 0%; /* 🔄 on annule l'ancien décalage */
-    background-color: rgba(0, 0, 0, 0.95); /* un peu plus opaque ? */
-    z-index: 9999; /* ✅ reste au-dessus de tout */
-    transition: left 0.3s ease;
-  }
-
-  .menu-panel.active {
-    left: 0;
-  }
-}
-
-      
   </style>
 </head>
 <body>
@@ -547,28 +448,19 @@ a, button { cursor: pointer; }
 
       <!-- Video 1 -->
       <div class="video-container">
-        <video src="vid001.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid001.mp4" controls muted autoplay></video>
         <div class="video-caption">
           <div class="caption-slider">
-                        <div class="caption-slide active">Bienvenue chez STAR Briques <br> La Référence en Briques Industrielles.</div>
+            <div class="caption-slide active">Bienvenue chez STAR Briques – La Référence en Briques Industrielles.</div>
             <div class="caption-slide">Un choix solide pour vos constructions modernes.</div>
             <div class="caption-slide">Qualité, durabilité et innovation – c’est notre promesse.</div>
-     <div class="caption-slide">STAR-Briques – Fabricant de briques industrielles de haute qualité basé à Agondjet Amissa transfo.</div>
-    <div class="caption-slide">Nous fournissons aux professionnels de la construction des matériaux durables et performants.</div>
-    <div class="caption-slide">Nous proposons des briques de 10 de 15 et 20 cm, ainsi que des hourdis pour béton de 15 et 20.</div>
-    <div class="caption-slide">Chez STAR-Briques, la qualité est au cœur de nos préoccupations.</div>
-    <div class="caption-slide">Matières premières rigoureusement sélectionnées, fabrication à la pointe de la technologie.</div>
-    <div class="caption-slide">Une équipe de R&D engagée dans l’élaboration de solutions innovantes</div>
-    <div class="caption-slide">La satisfaction client est primordiale. Nous vous accompagnons tout au long de vos projets.</div>
-    <div class="caption-slide">Services personnalisés pour les besoins spécifiques de chaque chantier.</div>
-    <div class="caption-slide">Contactez-nous ou visitez nos pages Facebook, TikTok et WhatsApp pour en savoir plus.</div>
-         </div>    
+          </div>
         </div>
       </div>
 
       <!-- Video 2 -->
       <div class="video-container">
-        <video src="vid003.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid003.mp4" controls muted autoplay></video>
         <div class="video-caption">
           <div class="caption-slider">
             <div class="caption-slide active">Star-Briques un prix qui séduit, une qualité qui rassure.</div>
@@ -579,32 +471,32 @@ a, button { cursor: pointer; }
 
       <!-- Video 3 -->
       <div class="video-container">
-        <video src="vid005.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid005.mp4" controls muted autoplay></video>
         <div class="video-caption">Pour la qualité et le prix, Star-Briques fait le pari des deux.</div>
         <audio src="mp3001.mp3" autoplay preload="auto"></audio>
       </div>
 
       <!-- Video 4 -->
       <div class="video-container">
-        <video src="vid006.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid006.mp4" controls muted autoplay></video>
         <div class="video-caption">Des briques solides, insonorisantes, économiques — une qualité béton à prix doux.</div>
       </div>
 
       <!-- Video 5 -->
       <div class="video-container">
-        <video src="vid002.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid002.mp4" controls muted autoplay></video>
         <div class="video-caption">Des prix imbattables pour vos projets. Star-Briques défie toute construction.</div>
       </div>
 
       <!-- Video 6 -->
       <div class="video-container">
-        <video src="vid004.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid004.mp4" controls muted autoplay></video>
         <div class="video-caption">100 % béton, sans joint de fermeture. Une structure plus résistante et durable.</div>
       </div>
 
       <!-- Video 7 -->
       <div class="video-container">
-        <video src="vid011.mp4" controls muted autoplay></video>
+        <video src="https://star-briques.github.io/Star-Briques/vid011.mp4" controls muted autoplay></video>
         <div class="video-caption">
           <div class="caption-slider">
             <div class="caption-slide active">Nous sommes situés à Akanda Amissa-Transfo.</div>
@@ -686,7 +578,7 @@ slideGroups.forEach(slider => {
     captions[index].classList.remove('active');
     index = (index + 1) % captions.length;
     captions[index].classList.add('active');
-  }, 5000); // change toutes les 5 secondes
+  }, 4000); // change toutes les 4 secondes
 });
 
 
@@ -715,8 +607,8 @@ slideGroups.forEach(slider => {
         if (caption) {
           const utterance = new SpeechSynthesisUtterance(caption);
           utterance.lang = 'fr-FR';
-          utterance.rate = 0.94;
-          utterance.pitch = 2;
+          utterance.rate = 0.88;
+          utterance.pitch = 1;
           utterance.volume = 2;
           if (selectedVoice) utterance.voice = selectedVoice;
           speechSynthesis.cancel();
@@ -779,7 +671,7 @@ slideGroups.forEach(slider => {
 <p><strong></strong> Star-Briques-LTD</p>
 <p><strong></strong>+24177572525</p>
 <p><strong>          <a href="https://wa.me/+24177572525" target="_blank">  
-            <img src="WhatsApp.svg" alt="WhatsApp" class="social-icon">  
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">  
         </a></strong></p>
 <p><strong>
 
@@ -823,27 +715,27 @@ slideGroups.forEach(slider => {
 
 <div class="social-container">
   <a href="https://www.facebook.com/profile.php?id=61556932132124" target="_blank">
-    <img src="Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-icon">
   </a>
   <a href="https://www.tiktok.com/@star_briques" target="_blank">
-    <img src="tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
+    <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="TikTok" class="social-icon">
   </a>
   <a href="https://wa.me/+24177572525" target="_blank">
-    <img src="WhatsApp.svg" alt="WhatsApp" class="social-icon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="social-icon">
   </a>
 
   <!-- 🔄 Bouton Partage -->
   <div class="share-wrapper">
-    <img src="share.svg" alt="Partager" class="social-icon" onclick="toggleShareSlide()" />
+    <img src="https://www.svgrepo.com/show/486829/share.svg" alt="Partager" class="social-icon" onclick="toggleShareSlide()" />
     <div id="share-slide" class="share-slide">
       <a id="share-facebook" href="#" target="_blank">
-        <img src="Facebook_f_logo_%282019%29.svg" alt="Partager sur Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Partager sur Facebook">
       </a>
       <a id="share-tiktok" href="#" target="_blank">
-        <img src="tiktok-logo-on-transparent-background-free-vector.jpg" alt="Partager sur TikTok">
+        <img src="https://static.vecteezy.com/system/resources/previews/006/057/996/original/tiktok-logo-on-transparent-background-free-vector.jpg" alt="Partager sur TikTok">
       </a>
       <a id="share-whatsapp" href="#" target="_blank">
-        <img src="WhatsApp.svg" alt="Partager sur WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Partager sur WhatsApp">
       </a>
     </div>
   </div>
@@ -853,123 +745,19 @@ slideGroups.forEach(slider => {
 
     
 <button class='menu-btn' onclick='toggleMenu()'>☰ Menu</button>
-<style>
 
-.rb-hslider {
-  position: relative;
-  width: 99%;
-  max-width: 100%;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  margin-top: 10px;
-}
-
-.rb-track {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
-}
-
-.rb-slide {
-  min-width: 100%;
-  position: relative;
-  height: 210px;
-}
-
-.rb-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.95);
-}
-
-.rb-caption {
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 15px;
-  font-family: 'Comic Sans MS', cursive;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 4px 0;
-}
-
-.rb-nav {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-
-.rb-btn {
-  background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 22px;
-  padding: 8px;
-  cursor: pointer;
-  pointer-events: all;
-}  
-
-    .logo-center2 {
-        height:7vh; width:7vh;
-    }
-    
-*/--------------------------------------------------------------------------------------------------------------------------------------------*/
-    @media screen and (max-width: 768px) {
-  .rb-hslider {
-    position: fixed; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 99%; 
-    z-index: 9999;
-  }
-
-    .rb-slide img {
-  width: 90%; margin-left:1%;
-  height: 100%; 
-  object-fit: cover;
-  filter: brightness(0.85);
-}
-
-}
-
-
-
-
-    
-</style>
      <h1 class="title">Star Briques</h1>
             
-        
+            <button class="ltd-button">LTD</button>
     
 <div id='menuPanel' class='menu-panel'>
-<h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center2"></h2>
-<div class="rb-hslider">
-  <div class="rb-track">
-    <div class="rb-slide"><img src="img1.jpg"><div class="rb-caption">Briques résistantes</div></div>
-    <div class="rb-slide"><img src="img2.jpg"><div class="rb-caption">Isolation phonique</div></div>
-    <div class="rb-slide"><img src="img3.jpg"><div class="rb-caption">Prix imbattables</div></div>
-      <div class="rb-slide"><img src="img4.png"><div class="rb-caption">Finition parfaite</div></div>
-    <div class="rb-slide"><img src="img5.jpg"><div class="rb-caption">Fabrication locale</div></div>
-    <div class="rb-slide"><img src="img6.jpg"><div class="rb-caption">Écologique</div></div>
-    <div class="rb-slide"><img src="img7.jpg"><div class="rb-caption">Livraison rapide</div></div>
-    <div class="rb-slide"><img src="img8.jpg"><div class="rb-caption">Support client pro</div></div>
-      
-  </div>
-  <div class="rb-nav">
-    <button class="rb-btn rb-prev">&#8592;</button>
-    <button class="rb-btn rb-next">&#8594;</button>
-  </div>
-</div>
-
-
-
+<h2>Star-Briques-LTD <img src="ico.png" alt="Logo" class="logo-center"></h2>
+<p><span id='men1'></span></p>
+<p><span id='men2'></span></p>
+<p><span id='men3'></span></p>
+<p><span id='men4'></span></p>
+<p><span id='men5'></span></p>
+<p><span id='dwebid'></span></p>
 <p>Page générée par D-ω≡/&gt; - générator </p>
 </div>
 <style>
@@ -994,10 +782,10 @@ slideGroups.forEach(slider => {
     left: 0%; /* ✅ Assure qu'il soit complètement caché */
     width: 27%;
     height: 78.3%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
     transition: left 0.3s ease-in-out;
-    padding: 10px;
+    padding: 20px;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     
     /* ✅ Centre le contenu */
@@ -1023,16 +811,14 @@ slideGroups.forEach(slider => {
 }
 
 
-/* -------------------------------------------------✅ Ajustements pour mobile-------------------------------------------------- */
+/* ✅ Ajustements pour mobile */
 @media screen and (max-width: 768px) {
     .menu-panel {
-        width: 98%; top:14%;
-        left: -125%; /* ✅ Assure une totale invisibilité */
-        padding-top: 25px; margin-left:-2%;
+        width: 90%;
+        left: -110%; /* ✅ Assure une totale invisibilité */
+        padding-top: 45px; 
         background-color: rgba(0, 0, 0, 0.8);
     }
-	
-	.menu-panel .rb-hslider {margin-left:2%;}
 
     .menu-btn {
         font-size: 16px; /* ✅ Ajuste la taille du bouton */
@@ -1043,65 +829,29 @@ slideGroups.forEach(slider => {
 
 </style>
 <script>
-let sliderInitialise = false;
-
-function initRbSlider() {
-    let rbIndex = 0;
-    const rbTrack = document.querySelector('.rb-track');
-    const rbSlides = document.querySelectorAll('.rb-slide');
-    const nextBtn = document.querySelector('.rb-next');
-    const prevBtn = document.querySelector('.rb-prev');
-
-    if (!rbTrack || rbSlides.length === 0) return; // ✅ Sécurité DOM
-
-    function updateRbSlider() {
-        rbTrack.style.transform = `translateX(-${rbIndex * 100}%)`;
-    }
-
-    function nextRbSlide() {
-        rbIndex = (rbIndex + 1) % rbSlides.length;
-        updateRbSlider();
-    }
-
-    function prevRbSlide() {
-        rbIndex = (rbIndex - 1 + rbSlides.length) % rbSlides.length;
-        updateRbSlider();
-    }
-
-    nextBtn.addEventListener('click', nextRbSlide);
-    prevBtn.addEventListener('click', prevRbSlide);
-
-    setInterval(nextRbSlide, 15000);
-    updateRbSlider();
-    sliderInitialise = true;
-}
-
 function toggleMenu() {
-    const menuPanel = document.getElementById('menuPanel');
-    const audioEnter = new Audio('./Bruit/entre.mp3');
-    const audioExit = new Audio('./Bruit/sortie.mp3');
-
+    let menuPanel = document.getElementById('menuPanel');
+    let audioEnter = new Audio('./Bruit/entre.mp3'); // 🎵 Son d'entrée
+    let audioExit = new Audio('./Bruit/sortie.mp3'); // 🎵 Son de sortie
+    
     if (menuPanel.style.left === '-100%') {
         menuPanel.style.left = '0';
-        audioEnter.play();
-
-        if (!sliderInitialise) initRbSlider(); // ✅ Initialisation unique au premier affichage
+        audioEnter.play(); // 📢 Joue le son d'entrée
     } else {
         menuPanel.style.left = '-100%';
-        audioExit.play();
+        audioExit.play(); // 📢 Joue le son de sortie
     }
 }
-
-// ✅ Mise à jour des textes s'il y a lieu
+ 
+ 
+// ✅ Décodage correct des caractères spéciaux avant insertion
 document.getElementById('men1').innerText = 'Bienvenue chez STAR Briques – La Référence en Briques Industrielles.';
-document.getElementById('men2').innerHTML = '<img src="ico.png" alt="Logo" class="logo-center">';
+document.getElementById('men2').innerText = 'Des briques solides, insonorisantes, économiques — et des prix imbattables pour vos projets de construction.';
 document.getElementById('men3').innerText = 'Des prix imbattables pour vos projets de construction.';
 document.getElementById('men4').innerText = 'Chez STAR Briques, nous produisons des briques 100 % béton, sans fermeture de joint, pour une structure plus résistante et durable.';
 document.getElementById('men5').innerText = '';
 document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 </script>
-
 </body>
 </html>
- 
