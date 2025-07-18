@@ -406,6 +406,21 @@ a, button { cursor: pointer; }
 }
 
 
+	   .image-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      aspect-ratio: 29 / 15; /* applique ton format réel */
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* ou "contain" si tu veux éviter le rognage */
+    }
       
 
       
@@ -539,6 +554,10 @@ a, button { cursor: pointer; }
   </style>
 </head>
 <body>
+
+	  <div class="image-wrapper">
+    <img src="img3.jpg" alt="SAK-Transit">
+  </div>
 
  <div class="container">
   <div class="video-slider">
