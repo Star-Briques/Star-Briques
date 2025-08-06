@@ -1124,6 +1124,68 @@ document.getElementById('men6').innerText = '';
 document.getElementById('dwebid').innerText = 'Star-Briques-LTD';
 </script>
 
+
+
+
+
+
+
+
+
+
+<style>
+  #modalBloc {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  #modalBloc .contenu {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  #modalBloc button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+
+<div id="modalBloc">
+  <div class="contenu">
+    <h2>Session expirée</h2>
+    <p>Acceder a la session Pro de votre flyer</p>
+    <button onclick="window.location.href='https://d-web-generator.github.io/D-web/'">Continuer</button>
+  </div>
+</div>
+
+<script>
+  setTimeout(() => {
+    document.getElementById("modalBloc").style.display = "flex";
+  }, 7500); // Affiche après 7
+</script>
+
+<script>
+  document.addEventListener("contextmenu", e => e.preventDefault());
+  document.addEventListener("keydown", e => {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && e.key === "I") ||
+      (e.ctrlKey && e.key === "U") ||
+      (e.ctrlKey && e.shiftKey && e.key === "J")
+    ) {
+      e.preventDefault();
+    }
+  });
+</script>	
 </body>
 </html>
  
